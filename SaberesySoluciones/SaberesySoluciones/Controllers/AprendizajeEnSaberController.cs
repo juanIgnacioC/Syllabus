@@ -17,37 +17,25 @@ namespace SaberesySoluciones.Controllers
         // GET: AprendizajeEnSaber
         public ActionResult Index()
         {
-            aprendizajeSaber.Aprendizajes = Aprendizajes.LeerHabilitados();
-            if (aprendizajeSaber.Aprendizajes == null)
+            List<Aprendizaje> aprendizajes = Aprendizajes.LeerHabilitados();
+            if (aprendizajes == null)
             {
-                aprendizajeSaber.Aprendizajes = new List<Aprendizaje>();
+                aprendizajes = new List<Aprendizaje>();
             }
-            aprendizajeSaber.Saberes = Saberes.LeerHabilitado();
-            if (aprendizajeSaber.Saberes == null)
+            foreach (Aprendizaje apr in aprendizajes)
             {
-                aprendizajeSaber.Saberes = new List<Saber>();
-            }
+                apr.Saberes = Aprendizajes.LeerSubSaberes(apr.Codigo);
 
-            if (aprendizajeSaber.CodigoAprendizaje != null)
-            {
-                aprendizajeSaber.SaberDeAprendizaje = Saberes.LeerSaberesEnAprendizaje(aprendizajeSaber.CodigoAprendizaje);
-                if (aprendizajeSaber.SaberDeAprendizaje == null)
+                //Ordenar las SubSaberes según el codigo para evitar que se vean desordenadas :)
+                //apr.Saberes.Sort((x, y) => x.Codigo.CompareTo(y.Codigo));
+
+                if (apr.Saberes== null)
                 {
-                    aprendizajeSaber.Saberes = new List<Saber>();
-                }
-                else {
-                    foreach (var todoS in aprendizajeSaber.Saberes) {
-                        foreach (var saber in aprendizajeSaber.Saberes) {
-                            if (todoS.Codigo == saber.Codigo)
-                            {
-                                aprendizajeSaber.Saberes.Remove(todoS);
-                            }
-                        }
-                    }
+                    apr.Saberes = new List<Saber>();
                 }
             }
 
-            return View(aprendizajeSaber);
+            return View(aprendizajes);
         }
 
         [HttpPost]

@@ -38,6 +38,47 @@ namespace SaberesSyllabus.Repositories
             }
         }
 
+        public static List<Saber> LeerSubSaberes(int codigo)
+        {
+            try
+            {
+                var command = new MySqlCommand() { CommandText = "sp_aprendizajes_leersubsaberes", CommandType = System.Data.CommandType.StoredProcedure };
+                command.Parameters.Add(new MySqlParameter() { ParameterName = "in_codigo", Direction = System.Data.ParameterDirection.Input, Value = codigo});
+                var datos = DataSource.GetDataSet(command);
+
+                List<Saber> saberes = new List<Saber>();
+                if (datos.Tables[0].Rows.Count > 0)
+                {
+                    foreach (System.Data.DataRow row in datos.Tables[0].Rows)
+                    {
+                        var prodData = row;
+                        Enum.TryParse(prodData["nivelLogro"].ToString(), out EnumLogro ELogro);
+                        Enum.TryParse(prodData["estado"].ToString(), out EnumEstado EEstado);
+                        var sabe = new Saber()
+                        {
+                            Codigo = Convert.ToString(prodData["codigo"]),
+                            Descripcion = prodData["descripcion"].ToString(),
+                            Logro = ELogro,
+                            Estado = EEstado,
+                            PorcentajeLogro = prodData["porcentajeLogro"].ToString(),
+                            Id = Convert.ToInt32(prodData["id"])
+                        };
+                        saberes.Add(sabe);
+                    }
+                }
+                return saberes;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+            }
+            finally
+            {
+
+            }
+            return null;
+        }
+
         public static bool Editar(Aprendizaje aprendizaje)
         {
             return false;
