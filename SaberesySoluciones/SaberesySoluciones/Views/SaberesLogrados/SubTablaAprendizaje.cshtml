@@ -1,0 +1,59 @@
+﻿@using SaberesySoluciones.Models
+@model List<SaberesySoluciones.Models.Aprendizaje>
+
+
+<table class="table table-striped table-hover table-bordered" id="apre">
+    
+        <tr>
+            <th></th>
+            <th>Código</th>
+            <th>Descripción</th>
+            <th>Porcentaje Logro</th>
+            
+        </tr>
+
+    <tbody>
+        @foreach (var aprendizaje in Model)
+        {
+            <tr>
+                <td><img src="~/Content/img/add.png" style="cursor:pointer" apreID="@aprendizaje.Codigo" /></td>
+                <td>@aprendizaje.Codigo</td>
+                <td style="text-align:justify">@aprendizaje.Descripcion</td>
+                <td>@aprendizaje.PorcentajeLogro</td>
+            </tr>
+
+            <tr id="fila_a-@aprendizaje.Codigo" style="display:none">
+                <td></td>
+                <td colspan="5">
+                    @Html.Action("SubTablaSaberes")
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+@section scripts{
+    <script type="text/javascript">
+        $(function () {
+
+            $("#comp tbody img").click(function () {
+
+                var apreID = $(this).attr("apreID");
+                var fila_a = $("#fila_a-" + apreID);
+                if (fila_a.css("display") == "none") {
+                    fila_a.css("display", "table-row");
+                }
+                else{
+                     fila_a.css("display", "none");
+                }
+
+
+            });
+        });
+
+
+    </script>
+
+
+}

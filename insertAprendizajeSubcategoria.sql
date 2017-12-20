@@ -1,0 +1,10 @@
+INSERT INTO syllabus.subcategoria (subCategoria, ref_categoria, codigo) VALUES ('Análisis Básico de Algoritmos', 'AL', 1);
+INSERT INTO syllabus.subcategoria (subCategoria, ref_categoria, codigo) VALUES ('Estrategias de Diseño de Algoritmos', 'AL', 2);
+INSERT INTO syllabus.subcategoria (subCategoria, ref_categoria, codigo) VALUES ('Estructuras de Datos y Algoritmos Fundamentales', 'AL', 3);
+INSERT INTO syllabus.subcategoria (subCategoria, ref_categoria, codigo) VALUES ('Computabilidad y Complejidad de Autómatas Básicos', 'AL', 4);
+INSERT INTO syllabus.subcategoria (subCategoria, ref_categoria, codigo) VALUES ('Lógica Digital y Sistemas Digitales', 'AR', 1);
+INSERT INTO syllabus.subcategoria (subCategoria, ref_categoria, codigo) VALUES ('Representación de datos a nivel de máquina', 'AR', 2);
+INSERT INTO syllabus.subcategoria (subCategoria, ref_categoria, codigo) VALUES ('Organización de máquinas a nivel de ensamblador', 'AR', 3);
+INSERT INTO syllabus.subcategoria (subCategoria, ref_categoria, codigo) VALUES ('Arquitectura y Organización de Sistemas de Memoria', 'AR', 4);
+INSERT INTO syllabus.subcategoria (subCategoria, ref_categoria, codigo) VALUES ('Interfaces y Comunicación', 'CN', 1);
+INSERT INTO syllabus.subcategoria (subCategoria, ref_categoria, codigo) VALUES ('Introducción a la modelación y simulación', 'CN', 2);

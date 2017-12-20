@@ -1,0 +1,225 @@
+﻿
+@{
+    ViewBag.Title = "Gestión Evaluaciones";
+}
+
+<h2>@ViewBag.title</h2>
+
+<table class="table table-hover table-bordered">
+    <thead class="thead-light">
+        <tr>
+            <th>Código</th>
+            <th>Tipo</th>
+            <th style=" white-space: nowrap">Saberes</th>
+            <th><button type="button" data-toggle="modal" data-target="#modalCrear" class="btn btn-success btn-sm" style="float:right" ><i class="fa fa-plus"></i> Añadir</button></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:center">1</td>
+            <td style="text-align:justify">Prueba</td>
+            <td style="vertical-align: middle;white-space: nowrap">
+                <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#ModalSaberes"> Ver Lista de Saberes </button>
+            </td>
+            <td style="vertical-align: middle; white-space: nowrap; float:right">
+                <button type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#modalModificar"><i class="fa fa-edit"></i> Modificar</button>
+                <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#modalDeshabilitar"><i class="fa fa-eye-slash"></i> Deshabilitar</button>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:center">2</td>
+            <td style="text-align:justify">Tarea</td>
+            <td style="vertical-align: middle;white-space: nowrap">
+                <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#ModalSaberes"> Ver Lista de Saberes </button>
+            </td>
+            <td style="vertical-align: middle; white-space: nowrap; float:right">
+                <button type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#modalModificar"><i class="fa fa-edit"></i> Modificar</button>
+                <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#modalDeshabilitar"><i class="fa fa-eye-slash"></i> Deshabiltiar</button>
+            </td>
+        </tr>
+    </tbody>
+
+</table>
+
+
+<!--MODAL DESHABILITAR-->
+<div class="modal fade bd-example-modal-sm" id="modalDeshabilitar" tabindex="-1" role="alertdialog" aria-labelledby="modalDeshabilitar">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Deshabilitar evaluación</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>¿Está seguro que desea deshabilitar la evaluación?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary btn-sm">Cancelar</button>
+                <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal">Deshabilitar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!--MODAL CREAR-->
+<div class="modal fade bd-example-modal-lg" id="modalCrear" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Evaluacion</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                
+                    <form>
+                        <fieldset>
+                            <legend>Crear</legend>
+
+                            <div class="form-group">
+                                <label for="tipoEvaluacion">Seleccione tipo de Evaluacion</label>
+                                <select class="form-control" id="tipoCrear">
+                                    <option selected>Seleccione tipo</option>
+                                    <option>Prueba</option>
+                                    <option>Tarea</option>
+                                </select>
+                                
+                            </div>
+                            <div class="form-check">
+                                <label class="form-check-label">
+                                    <input class="form-check-input" type="checkbox" value="">
+                                    0321: Etiam porta sem malesuada magna mollis euismod.
+                                </label>
+                                <label class="form-check-label">
+                                    <input class="form-check-input" type="checkbox" value="">
+                                    0456: Maecenas sed diam eget risus varius blandit sit amet non magna.
+                                </label>
+                                <label class="form-check-label">
+                                    <input class="form-check-input" type="checkbox" value="">
+                                    0789:  	Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
+                                </label>
+                            </div>
+                        </fieldset>
+                    </form>
+                
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-primary btn-sm">Añadir</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!--MODAL SABERES-->
+<div class="modal fade" id="ModalSaberes" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Saberes</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>
+                    <table class="table table-striped table-hover table-bordered">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th>Código</th>
+                                <th>Descripción</th>
+                                <th>Nivel de Logro</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>0321</td>
+                                <td>Etiam porta sem malesuada magna mollis euismod.</td>
+                                <td>Saber</td>
+                            </tr>
+                            <tr>
+                                <td>0456</td>
+                                <td>Maecenas sed diam eget risus varius blandit sit amet non magna.</td>
+                                <td>Saber, Saber Hacer</td>
+
+                            </tr>
+                            <tr>
+                                <td>0789</td>
+                                <td>Duis mollis, est non commodo luctus, nisi erat porttitor ligula.</td>
+                                <td>Saber Ser</td>
+                            </tr>
+                            <tr>
+                                <td>0654</td>
+                                <td>Nullam id dolor id nibh ultricies vehicula ut id elit.</td>
+                                <td>Saber, Saber Ser</td>
+                            </tr>
+                            <tr>
+                                <td>0147</td>
+                                <td>Fusce dapibus, tellus ac cursus commodo, tortor mauris nibh.</td>
+                                <td>Saber, Saber Hacer, Saber Ser</td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </p>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+<!--MODAL MODIFICAR-->
+<div class="modal fade bd-example-modal-lg" id="modalModificar" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Modificar Evaluacion</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+
+                <form>
+                    <fieldset>
+                        <legend>Modificar</legend>
+
+                        <div class="form-group">
+                            <label for="tipoEvaluacion">Seleccione tipo de Evaluacion</label>
+                            <select class="form-control" id="tipoCrear">
+                                <option selected>Prueba</option>
+                                <option>Tarea</option>
+                            </select>
+
+                        </div>
+                        <div class="form-check">
+                            <label class="form-check-label">
+                                <input selected class="form-check-input" type="checkbox" value="">
+                                0321: Etiam porta sem malesuada magna mollis euismod.
+                            </label>
+                            <label class="form-check-label">
+                                <input class="form-check-input" type="checkbox" value="">
+                                0456: Maecenas sed diam eget risus varius blandit sit amet non magna.
+                            </label>
+                            <label class="form-check-label">
+                                <input selected class="form-check-input" type="checkbox" value="">
+                                0789:  	Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
+                            </label>
+                        </div>
+                    </fieldset>
+                </form>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-primary btn-sm">Añadir</button>
+            </div>
+        </div>
+    </div>
+</div>

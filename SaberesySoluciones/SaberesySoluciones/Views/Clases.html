@@ -1,0 +1,310 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <!-- Bootstrap CSS -->
+
+    <LINK REL=StyleSheet HREF="Estilos.css" TYPE="text/css" MEDIA=screen> 
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+  </head>
+  <body>
+    
+      <img src="Utalca.svg" width=140 height=140> 
+
+      <nav class="navbar navbar-expand-lg navbar-dark bg-#B40431">
+        <a class="navbar-brand" href="#">Sistema de Control de Avance de Saberes</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarColor01">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="#">Curso<span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Unidades</a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="#">Clase</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Competencias</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Aprendizajes</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Saberes</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Vistas</a>
+            </li>
+          </ul>
+          
+        </div>
+      </nav>
+
+      <br>
+
+      
+
+    <div class="container">
+
+      <h2 style="">Clases</h2>
+
+      <a class="btn btn-primary" data-toggle="modal" href="#modalCrear" style="margin-bottom:10px" >Agregar</a>
+
+
+
+      <table class="table table-hover" >
+        <tr>
+          <th>Fecha</th>
+          <th>Horario</th>
+          <th>Tema</th>
+          <th>Descripcion</th>
+          <th>Tipo clase</th>
+          <th>Saberes</th>
+          <th><!-- modificar --></th>
+          <th><!-- eliminar --></th>
+        </tr>
+        <tr>
+          <td style="text-align:center">dd/mm/aa</td>
+          <td>hh:mm AM/PM</td>
+          <td>Tema 1</td>
+          <td>Descripcion 1</td>
+          <td style="text-align:justify"> Tema 1</td>
+          <td><a class="btn btn-info" data-toggle="modal" href="#modalVerSaberes">Ver saberes</a></td>
+          <td style="vertical-align: middle">
+              <a class="btn btn-warning" data-toggle="modal" href="#modalModificar">Modificar</a>
+          </td>
+          <td style="vertical-align: middle">
+            <a class="btn btn-danger" data-toggle="modal" href="#modalEliminar">Eliminar</a>
+          </td>
+        </tr>
+        <tr>
+          <td style="text-align:center">dd/mm/aa</td>
+          <td>hh:mm AM/PM</td>
+          <td>Tema 1</td>
+          <td>Descripcion 1</td>
+          <td style="text-align:justify">Tema 2</td>
+          <td><a class="btn btn-info" data-toggle="modal" href="#modalVerSaberes">Ver saberes</a></td>
+          <td style="vertical-align: middle">
+              <a class="btn btn-warning" data-toggle="modal" href="#modalModificar">Modificar</a>
+          </td>
+          <td style="vertical-align: middle">
+            <a class="btn btn-danger" data-toggle="modal" href="#modalEliminar">Eliminar</a>
+          </td>
+        </tr>
+      </table>
+    </div>
+
+    <!-- Modal crear clases -->
+    <div class="modal fade" id="modalCrear" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Crear clase</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="container">
+              <h4>Crear Clase</h4>
+              <form >
+                <div class="form-group">
+                  <label for="textFecha">Fecha</label>
+                </div>
+                <div class="form-group">
+                  <label for="textTema">Tema</label>
+                  <input type="text" class="form-control" id="textTema" placeholder="Tema">
+                </div>
+                <div class="form-group">
+                  <label for="textAreaDescripcion">Descripcion</label>
+                  <textarea type="text" class="form-control" id="textAreaDescripcion" placeholder="Descripcion"></textarea>
+                </div>
+                <div class="form-group">
+                  <label for="selectTipoClase">Tipo clase</label>
+                  <select class="form-control" id="selectTipoClase">
+                    <option>Clase</option>
+                    <option>Laboratorio</option>
+                    <option>Ayudantia</option>
+                  </select>
+                </div>  
+                  <div class = "form-group">
+                    <label>Lista saberes</label>
+                    <div class="checkbox">
+                      <label><input type="checkbox" value="">Saber 1</label>
+                    </div>
+                    <div class="checkbox">
+                      <label><input type="checkbox" value="">Saber 2</label>
+                    </div>
+                    <div class="checkbox disabled">
+                      <label><input type="checkbox" value="">Saber 3</label>
+                    </div>
+                    <div class="checkbox disabled">
+                      <label><input type="checkbox" value="">Saber 4</label>
+                    </div>
+                    <div class="checkbox disabled">
+                      <label><input type="checkbox" value="">Saber 5</label>
+                    </div>
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-primary">Crear</button>
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                </div>
+              </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+
+    <!-- Modal de eliminar -->
+    <div class="modal fade" id="modalEliminar" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Eliminar clase</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class = "container">
+              <h4>¿Quieres eliminar esta clase?</h4>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary">Eliminar</button>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal de modificar -->
+    <div class="modal fade" id="modalModificar" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Modificar clase</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="container">
+              <h4>Modificar clase</h4>
+              <form >
+                <div class="form-group">
+                  <label for="textFecha">Fecha</label>
+                </div>
+                <div class="form-group">
+                  <label for="textTema">Tema</label>
+                  <input type="text" class="form-control" id="textTema" placeholder="Tema" value = "Tema">
+                </div>
+                <div class="form-group">
+                  <label for="textAreaDescripcion">Descripcion</label>
+                  <textarea type="text" class="form-control" id="textAreaDescripcion" placeholder="Descripcion">Descripcion</textarea>
+                </div>
+                <div class="form-group">
+                  <label for="selectTipoClase">Tipo clase</label>
+                  <select class="form-control" id="selectTipoClase">
+                    <option>Clase</option>
+                    <option>Laboratorio</option>
+                    <option>Ayudantia</option>
+                  </select>
+                </div>
+                <div class = "form-group">
+                    <label>Lista saberes</label>
+                    <div class="checkbox">
+                      <label><input type="checkbox" value="" checked>Saber 1</label>
+                    </div>
+                    <div class="checkbox">
+                      <label><input type="checkbox" value="">Saber 2</label>
+                    </div>
+                    <div class="checkbox disabled">
+                      <label><input type="checkbox" value="" checked="">Saber 3</label>
+                    </div>
+                    <div class="checkbox disabled">
+                      <label><input type="checkbox" value="">Saber 4</label>
+                    </div>
+                    <div class="checkbox disabled">
+                      <label><input type="checkbox" value="" checked>Saber 5</label>
+                    </div>
+                  </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-primary">Modificar</button>
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal de vista saberes -->
+    <div class="modal fade" id="modalVerSaberes" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Saberes</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+          <table class="table table-hover">
+            <tr>
+              <th>Codigo</th>
+              <th>Decripcion</th>
+              <th>Niveld de logro</th>
+            <tr>
+              <td>001</td>
+              <td>Descripcion 1</td>
+              <td>Saber</td>
+            </tr>
+            <tr>
+              <td>002</td>
+              <td>Descripcion 2</td>
+              <td>Saber hacer</td>
+            </tr>
+            <tr>
+              <td>003</td> 
+              <td>Descripcion 3</td>
+              <td>Saber ser</td>
+            </tr>
+          </table>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary">Save changes</button>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+
+
+
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+  </body>
+</html>

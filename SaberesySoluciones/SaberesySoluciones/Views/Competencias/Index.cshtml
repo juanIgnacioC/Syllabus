@@ -1,0 +1,249 @@
+﻿@using SaberesySoluciones.Models
+@model List<SaberesySoluciones.Models.Competencia>
+@{
+    ViewBag.Title = "Competencias";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<script type="text/javascript">
+$(document).ready(function() {
+    $("#btn-add").click(function(){
+        $("#add").modal({show: true});
+    });
+    $("#btn-edit").click(function () {
+        $("#edit").modal({ show: true });
+    });
+    $("#btn-delete").click(function () {
+        $("#delete").modal({ show: true });
+    });
+    });
+</script>
+
+<a href="" id="btn-add" class="btn btn-primary btn-sm" data-title="add" data-toggle="modal" data-target="#add" style="margin-bottom:10px">Agregar</a>
+
+<table class="table table-striped table-hover table-bordered">
+    <thead class="thead-dark">
+        <tr>
+            <th>Código</th>
+            <th>Nombre</th>
+            <th>Descripción</th>
+            <th>Nivel</th>
+            <th>Básico</th>
+            <th>Intermedio</th>
+            <th>Avanzado</th>
+            <th></th>
+            <th></th>
+        </tr>
+   </thead>
+        @foreach (var comp in Model)
+        {
+            <tr>
+                <td style="text-align:center">@comp.Codigo</td>
+                <td>@comp.Nombre</td>
+                <td style="text-align:justify">@comp.Descripcion</td>
+                <td>@comp.Dominio</td>
+                <td>@comp.Basico</td>
+                <td>@comp.Intermedio</td>
+                <td>@comp.Avanzado</td>
+                <td style="vertical-align: middle">
+                    <a href="" id="btn-edit" class="btn btn-warning btn-sm" data-title="edit" data-toggle="modal" data-target="#edit" onclick="editmsj('@comp.Codigo', '@comp.Nombre', '@comp.Descripcion', '@comp.Dominio', '@comp.Basico', '@comp.Intermedio', '@comp.Avanzado', '@comp.TiempoDesarrollo')">Modificar</a>
+                </td>
+                <td style="vertical-align: middle">
+                    @if (@comp.Estado == "Habilitado")
+                    {
+                        <a href="" id="btn-delete" class="btn btn-danger btn-sm" data-title="desh" data-toggle="modal" data-target="#desh" onclick="deshmsj('@comp.Codigo')">Deshabilitar</a>
+                    }
+                    @if (@comp.Estado == "Deshabilitado")
+                    {
+                        <a href="" id="btn-delete" class="btn btn-danger btn-sm" data-title="hab" data-toggle="modal" data-target="#hab" onclick="habmsj('@comp.Codigo')">Habilitar</a>
+                    }
+                </td>
+
+            </tr>
+        }
+
+</table>
+
+<script type="text/javascript">
+    deshmsj = function (idcomp) {
+        document.getElementById("deletecomp").setAttribute("value", idcomp);
+    }
+    habmsj = function (idcomp) {
+        document.getElementById("habcomp").setAttribute("value", idcomp);
+    }
+
+    editmsj = function (idcod, nom, descrp, nivel, basico, intermedio, avanzado, tiempod) {
+        document.getElementById("editcomp").setAttribute("value", idcod);
+        document.getElementById("editnombre").setAttribute("value", nom);
+        document.getElementById("editdescripcion").setAttribute("value", descrp);
+        $("#nivelid").append(nivel);
+        document.getElementById("editbasica").setAttribute("value", basico);
+        document.getElementById("editintermedia").setAttribute("value", intermedio);
+        document.getElementById("editavanzada").setAttribute("value", avanzado);
+        document.getElementById("edittiempodesarrollo").setAttribute("value", tiempod);
+    }
+</script>
+
+<div class="modal fade" id="add" tabindex="-1" role="dialog" aria-labelledby="add" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
+                <h4 class="modal-title custom_align" id="Heading">Agregar una Nueva Competencia</h4>
+            </div>
+            @using (Html.BeginForm("Crear", "Competencias", FormMethod.Post, new { enctype = "multipart/form-data", @style = "border:none", @class = "col-offset-2" }))
+            {
+            <div class="modal-body">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label for="Nombre">Nombre de la Competencia:</label>
+                        <input maxlength="255" type="text" min="0" class="form-control" placeholder="Escriba aquí la descripción de la Competencia." name="Nombre" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="Nombre">Descripción de la Competencia:</label>
+                        <input maxlength="255" type="text" min="0" class="form-control" placeholder="Escriba aquí la descripción de la Competencia." name="Descripcion" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="Nombre">Nivel de la Competencia:</label>
+                        <select id="Dominio" name="Dominio" required>
+                            <option value="Basico">Basico</option>
+                            <option value="Intermedio">Intermedio</option>
+                            <option value="Avanzado">Avanzado</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="Nombre">Descripción Básica del Nivel:</label>
+                        <input type="text" min="0" class="form-control" placeholder="Escriba aquí la descripción básica del nivel la Competencia." name="Basico" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="Nombre">Descripción Intermedia del Nivel:</label>
+                        <input type="text" min="0" class="form-control" placeholder="Escriba aquí la descripción intermedia del nivel la Competencia." name="Intermedio" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="Nombre">Descripción Avanzado del Nivel:</label>
+                        <input type="text" min="0" class="form-control" placeholder="Escriba aquí la descripción avanzada del nivel la Competencia." name="Avanzado" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="Nombre">Descripción Tiempo de Desarrollo:</label>
+                        <input type="text" min="0" class="form-control" placeholder="Escriba aquí la descripción básica del tiempo de desarrollo de la Competencia." name="TiempoDesarrollo" required>
+                    </div>
+                </div>
+                <input type="hidden" name="Codigo" value="-1">
+                <input type="hidden" name="Estado" value="Habilitado">
+            </div>
+
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-primary">Crear</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+            }
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="edit" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
+                <h4 class="modal-title custom_align" id="Heading">Editar Competencia</h4>
+            </div>
+            @using (Html.BeginForm("Editar", "Competencias", FormMethod.Post, new { enctype = "multipart/form-data", @style = "border:none", @class = "col-offset-2" }))
+            {
+            <div class="modal-body">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label for="Nombre">Nombre de la Competencia:</label>
+                        <input maxlength="255" type="text" min="0" class="form-control" placeholder="Escriba aquí la descripción de la Competencia." name="Nombre" id="editnombre" value="" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="Nombre">Descripción de la Competencia:</label>
+                        <input maxlength="255" type="text" min="0" class="form-control" placeholder="Escriba aquí la descripción de la Competencia." name="Descripcion" id="editdescripcion" value="" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="Nombre">Nivel de la Competencia:</label>
+                        <p>Usted seleccionó: <span id="nivelid"></span></p>
+                        <select id="Dominio" name="Dominio" required>
+                            <option value="Basico">Basico</option>
+                            <option value="Intermedio">Intermedio</option>
+                            <option value="Avanzado">Avanzado</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="Nombre">Descripción Básica del Nivel:</label>
+                        <input type="text" id="editbasica" min="0" class="form-control" placeholder="Escriba aquí la descripción básica del nivel la Competencia." name="Basico" value="" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="Nombre">Descripción Intermedia del Nivel:</label>
+                        <input type="text" id="editintermedia" min="0" class="form-control" placeholder="Escriba aquí la descripción intermedia del nivel la Competencia." name="Intermedio"  value="" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="Nombre">Descripción Avanzado del Nivel:</label>
+                        <input type="text" id="editavanzada" min="0" class="form-control" placeholder="Escriba aquí la descripción avanzada del nivel la Competencia." name="Avanzado"  value="" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="Nombre">Descripción Tiempo de Desarrollo:</label>
+                        <input type="text" id="edittiempodesarrollo" min="0" class="form-control" placeholder="Escriba aquí la descripción básica del tiempo de desarrollo de la Competencia." name="TiempoDesarrollo"  value="" required>
+                    </div>
+                <p>Al modificar esto, usted está aceptando que la Competencia anterior será deshabilitada para dar paso a una nueva Competencia</p>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <input type="hidden" id="editcomp" name="Codigo" value="" />
+                <button type="submit" class="btn btn-primary">Modificar</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+            </div>
+            }
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="desh" tabindex="-1" role="dialog" aria-labelledby="desh" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
+                <h4 class="modal-title custom_align" id="Heading">Deshabilitar Competencia</h4>
+            </div>
+            @using (Html.BeginForm("Deshabilitar", "Competencias", FormMethod.Post, new { @style = "border:none" }))
+            {
+            <div class="modal-body">
+                <p id="message">¿Estás seguro de que quieres Deshabilitar la Competencia?</p>
+            </div>
+            <div class="modal-footer">
+                <input type="hidden" id="deletecomp" name="codigo" value="" />
+                <button type="submit" class="btn btn-primary">Deshabilitar</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+            </div>
+            }
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="hab" tabindex="-1" role="dialog" aria-labelledby="hab" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
+                <h4 class="modal-title custom_align" id="Heading">Habilitar Competencia</h4>
+            </div>
+            @using (Html.BeginForm("Habilitar", "Competencias", FormMethod.Post, new { @style = "border:none" }))
+            {
+                <div class="modal-body">
+                    <p id="message">¿Estás seguro de que quieres Habilitar la Competencia?</p>
+                </div>
+                <div class="modal-footer">
+                    <input type="hidden" id="habcomp" name="codigo" value="" />
+                    <button type="submit" class="btn btn-primary">Habilitar</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                </div>
+            }
+        </div>
+    </div>
+</div>

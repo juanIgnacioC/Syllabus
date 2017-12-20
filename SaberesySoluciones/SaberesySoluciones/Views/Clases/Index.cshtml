@@ -1,0 +1,143 @@
+﻿@model IEnumerable<SaberesySoluciones.Models.Clase>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<table class="table table-hover table-bordered">
+    <thead class="thead-light">
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.Fecha)</th>
+            <th>@Html.DisplayNameFor(model => model.Tema)</th>
+            <th>@Html.DisplayNameFor(model => model.Descripcion)</th>
+            <th>@Html.DisplayNameFor(model => model.TipoClase)</th>
+            <th></th>
+            <th><button type="button" data-toggle="modal" data-target="#modalAdd" class="btn btn-success btn-sm" style="float:right"><i class="fa fa-plus"></i> Añadir</button></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td style="text-align:justify">@Html.DisplayFor(modelItem => item.Fecha)</td>
+                <td style="text-align:justify">@Html.DisplayFor(modelItem => item.Tema)</td>
+                <td style="text-align:justify">@Html.DisplayFor(modelItem => item.Descripcion)</td>
+                <td style="text-align:justify">@Html.DisplayFor(modelItem => item.TipoClase)</td>
+                <td style="vertical-align: middle;white-space: nowrap">
+                    @{ var target = "#modalEdit_" + item.Id;
+                    }
+                    <button type="button" data-toggle="modal" data-target="@target" class="btn btn-warning btn-sm"><i class="fa fa-edit"></i> Modificar</button>
+                    <button type="button" data-toggle="modal" data-target="#modalDisable" class="btn btn-danger btn-sm"><i class="fa fa-eye-slash"></i> Deshabilitar</button>
+                </td>
+            </tr>
+
+                        }
+    </tbody>
+</table>
+
+@foreach (var item in Model)
+{
+    var target = "modalEdit_" + item.Id;
+
+    <div class="modal fade" id="@target" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Editar</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        @Html.LabelFor(modelItem => item.Fecha, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            <div class="input-group" id="datetimepicker">
+                                @Html.TextBoxFor(modelItem => item.Fecha, new { @class = "form-control", @type = item.Fecha })
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(modelItem => item.Fecha, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            <div class="input-group" id="datetimepicker">
+                                @Html.TextBoxFor(modelItem => item.Fecha, new { @class = "form-control", @type = "date" })
+                            </div>
+                        </div>
+                    </div>
+
+                    
+
+
+                    <div class="form-group">
+                        @Html.LabelFor(modelItem => item.Tema, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(modelItem => item.Tema, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(modelItem => item.Tema, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(modelItem => item.Descripcion, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.TextAreaFor(modelItem => item.Descripcion, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(modelItem => item.Descripcion, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(modelItem => item.Tipo, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EnumDropDownListFor(modelItem => item.Tipo, item.TipoClase, htmlAttributes: new { @class = "form -control" })
+                        </div>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                    <button type="button" class="btn btn-primary">Modificar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+
+<div class="modal fade" id="modalDisable" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Dehabilitar</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                ¿Esta seguro de deshabilitar este aprendizaje?
+                <div>
+                    <h4>@Html.DisplayNameFor(model => model.Fecha)</h4>
+                    <hr />
+
+                    @using (Html.BeginForm())
+                    {
+                        @Html.AntiForgeryToken()
+
+                        <div class="form-actions no-color">
+                            <input type="submit" value="Delete" class="btn btn-default" /> |
+                            @Html.ActionLink("Back to List", "Index")
+                        </div>
+                    }
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-primary">Deshabilitar</button>
+            </div>
+        </div>
+    </div>
+</div>
+@{
+    SaberesySoluciones.Models.Clase nuevo = new SaberesySoluciones.Models.Clase();
+}
+@Html.Partial("Crear", nuevo)

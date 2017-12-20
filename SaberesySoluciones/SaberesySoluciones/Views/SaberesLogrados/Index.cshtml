@@ -1,0 +1,75 @@
+﻿
+@using SaberesySoluciones.Models
+@using SaberesSyllabus.Models
+
+@model List<SaberesySoluciones.Models.Competencia>
+
+@{
+    ViewBag.Title = "Saberes Logrados";
+}
+
+<h2>@ViewBag.Title</h2>
+
+
+
+<table class="table table-striped table-hover table-bordered" id="comp">
+    <thead class="thead-dark">
+        <thread>
+            <tr>
+                <th></th>
+                <th>Código</th>
+                <th>Descripción</th>
+                <th>Porcentaje logro</th>
+            </tr>
+        </thread>
+    </thead>
+
+        @foreach (var competencia in Model)
+        {
+            <tr>
+                <td style="text-align:center"><img src="~/Content/img/add.png" style="cursor:pointer" compID="@competencia.Codigo" /></td>
+                <td style="text-align:center">@competencia.Codigo</td>
+                <td style="text-align:justify">@competencia.Descripcion</td>
+                <td style="text-align:center">@competencia.PorcentajeLogro</td>
+
+            </tr>
+
+
+            <tr id="fila-@competencia.Codigo" style="display:none">
+                <td></td>
+                <td colspan="5">
+                    @Html.Action("SubTablaAprendizaje")
+                </td>
+            </tr>
+
+
+        }
+</table>
+
+@section scripts{
+    <script type = "text/javascript">
+        $(function () {
+
+            $("#comp tbody img").click(function () {
+
+                var compID = $(this).attr("compID");
+                var fila = $("#fila-" + compID);
+                if (fila.css("display") == "none") {
+                    fila.css("display", "table-row");
+                }
+                else{
+                     fila.css("display", "none");
+                }
+                
+
+            });
+        });
+
+
+    </script>
+
+    
+    }
+
+
+

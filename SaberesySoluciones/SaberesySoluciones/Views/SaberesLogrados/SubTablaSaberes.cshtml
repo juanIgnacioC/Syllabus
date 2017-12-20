@@ -1,0 +1,24 @@
+﻿@using SaberesSyllabus.Models
+@model List<SaberesSyllabus.Models.Saber>
+
+
+<table class="table table-striped table-hover table-bordered">
+    <thead class="thead-dark">
+        <tr>
+            <th>Código</th>
+            <th>Descripción</th>
+            <th>Nivel de Saber</th>
+            <th>Porcentaje Logro</th>
+            
+        </tr>
+        @foreach (var sabe in Model)
+        {
+            <tr>
+                <td style="text-align:center">@sabe.Codigo</td>
+                <td style="text-align:justify">@sabe.Descripcion</td>
+                <td>@sabe.Logro</td>
+                <td style="text-align:justify">@sabe.PorcentajeLogro</td>
+
+            </tr>
+        }
+</table>

@@ -1,0 +1,18 @@
+﻿@model SaberesySoluciones.ViewModel.UnionEvaluacionUnidad
+@using SaberesSyllabus.Models
+
+@{
+    ViewBag.Title = "Agregar Evaluaciones a Unidades";
+}
+
+<h2>@ViewBag.Title</h2>
+
+@foreach (Unidad unidad in Model.Unidades)
+{
+    <h3>@unidad.Titulo</h3>
+    <button type="button" data-toggle="modal" data-target="#modalAdd" class="btn btn-success btn-sm" onclick="addUnidad('@unidad.Titulo')">
+        <i class="fa fa-plus"></i> Agregar Evaluación
+    </button>
+    <br />
+    <br />
+}

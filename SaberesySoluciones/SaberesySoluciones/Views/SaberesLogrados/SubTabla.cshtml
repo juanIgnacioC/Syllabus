@@ -1,0 +1,22 @@
+﻿@using SaberesySoluciones.Models
+@model List<SaberesySoluciones.Models.Aprendizaje>
+
+<table class="table table-hover ">
+    <thread>
+        <tr>
+            <th>Código</th>
+            <th>Categoría</th>
+            <th>Sub Categoría</th>
+            <th>Descripción</th>
+        </tr>
+    </thread>
+    @foreach (var aprendizaje in Model)
+    {
+        <tr>
+            <td>@aprendizaje.Codigo</td>
+            <td>@aprendizaje.Categoria</td>
+            <td>@aprendizaje.SubCategoria</td>
+            <td style="text-align:justify">@aprendizaje.Descripcion</td>
+        </tr>
+    }
+</table>

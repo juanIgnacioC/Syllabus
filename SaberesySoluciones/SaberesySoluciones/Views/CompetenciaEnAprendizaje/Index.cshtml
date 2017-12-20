@@ -1,0 +1,86 @@
+﻿@model SaberesySoluciones.ViewModel.CompetenciaEnAprendizajeController
+@{
+    ViewBag.Title = "Agregar Aprendizajes a una Competencia";
+}
+
+<h2>@ViewBag.Title</h2>
+
+@using (Html.BeginForm("Crear", "CompetenciaEnAprendizaje", FormMethod.Post, new { enctype = "multipart/form-data", @style = "border:none", @class = "col-offset-2" }))
+{
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <select id="Competencia" name="Competencia" required>
+                    @if (Model.competencias != null)
+                    {
+                        foreach (var competencia in Model.competencias)
+                        {
+                            <option value="@competencia.Codigo">@competencia.Descripcion</option>
+                        }
+                        <option value="Nada">...</option>
+                    }
+                </select>
+
+            </div>
+            <div class="col">
+                <button type="submit" class="btn btn-primary">Cargar Competencia</button>
+            </div>
+        </div>
+    </div>
+ }
+<br />
+
+
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <h2>Aprendizajes</h2>
+
+                    <table class="table table-striped table-hover table-bordered">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th>Código</th>
+                                <th>Descripción</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var aprendizaje in Model.aprendizajes)
+                            {
+                                <tr>
+                                    <td>@aprendizaje.Codigo</td>
+                                    <td>@aprendizaje.Descripcion</td>
+                                    <td><a href="" id="btn-primary" class="btn btn-primary" data-title="desh" data-toggle="modal" data-target="#desh" onclick="">Añadir a Aprendizaje</a></td>
+                            </tr>
+                            }
+                        </tbody>
+                    </table> 
+                </div>
+                <div class="col">
+                    <h2>Aprendizajes Agregados</h2>
+
+                    <table class="table table-striped table-hover table-bordered">
+                        <thead class="thead-dark">
+                            
+                        </thead>
+                        <tbody class="table-success">
+                            <thead class="thead-dark">
+                                <tr>
+                                    <th>Código</th>
+                                    <th>Descripción</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            @foreach (var aprendizaje in Model.aprendizajeDeCompentencia)
+                            {
+                                <tr>
+                                    <td>@aprendizaje.Codigo</td>
+                                    <td>@aprendizaje.Descripcion</td>
+                                    <td><a href="" id="btn-primary" class="btn btn-primary" data-title="desh" data-toggle="modal" data-target="#desh" onclick="">Eliminar de Aprendizaje</a></td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table> 
+                </div>
+            </div>
+        </div>

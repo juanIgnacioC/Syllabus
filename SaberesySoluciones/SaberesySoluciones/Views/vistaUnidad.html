@@ -1,0 +1,376 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Unidades</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <LINK REL=StyleSheet HREF="Estilos.css" TYPE="text/css" MEDIA=screen>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+  </head>
+  <body>
+      <img src="Utalca.svg" width=140 height=140>
+      <nav class="navbar navbar-expand-lg navbar-dark bg-#B40431">
+        <a class="navbar-brand" href="#">Sistema de Control de Saberes</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation" style="">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+      <div class="collapse navbar-collapse" id="navbarColor01">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="#">Perfil</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Cursos</a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" href="#">Unidades<span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Clases</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Competencias</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Aprendizajes</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Saberes</a>
+          </li>
+          
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+          <input class="form-control mr-sm-2" type="text" placeholder="Search">
+          <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
+        </form>
+      </div>
+    </nav>
+
+    <table class="table table-striped table-hover table-bordered">
+      <thead class="thead-dark">
+        <tr>
+          <th>Nombre</th>
+          <th>Listas de clases</th>
+          <th>Listas de Saberes</th>
+          <th> <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#miModal">Crear</button> </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <tr class="table-secundary">
+          <td>Unidad 1</td>
+          <td><button type="button" class="btn btn-info" data-toggle="modal" data-target="#ModalClases"> Ver Lista de Clases </button></td>
+          <td><button type="button" class="btn btn-success" data-toggle="modal" data-target="#ModalSaberes"> Ver Lista de Saberes </button></td>
+          <td><button type="button" class="btn btn-warning" data-toggle="modal" data-target="#ModalModificar"> Modificar </button> <button type="button" class="btn btn-danger">Eliminar</button></td>
+        </tr>
+        <tr class="table-secundary">
+          <td>Unidad 2</td>
+          <td><button type="button" class="btn btn-info" data-toggle="modal" data-target="#ModalClases"> Ver Lista de Clases </button></td>
+          <td><button type="button" class="btn btn-success" data-toggle="modal" data-target="#ModalSaberes"> Ver Lista de Saberes </button></td>
+          <td><button type="button" class="btn btn-warning" data-toggle="modal" data-target="#ModalModificar">Modificar</button> <button type="button" class="btn btn-danger">Eliminar</button></td>
+        </tr>
+        <tr class="table-secundary">
+          <td>Unidad 3</td>
+          <td><button type="button" class="btn btn-info" data-toggle="modal" data-target="#ModalClases"> Ver Lista de Clases </button></td>
+          <td><button type="button" class="btn btn-success" data-toggle="modal" data-target="#ModalSaberes"> Ver Lista de Saberes </button></td>
+          <td><button type="button" class="btn btn-warning" data-toggle="modal" data-target="#ModalModificar">Modificar</button> <button type="button" class="btn btn-danger">Eliminar</button></td>
+        </tr>
+        <tr class="table-secundary">
+          <td>Unidad 4</td>
+          <td><button type="button" class="btn btn-info" data-toggle="modal" data-target="#ModalClases"> Ver Lista de Clases </button></td>
+          <td><button type="button" class="btn btn-success" data-toggle="modal" data-target="#ModalSaberes"> Ver Lista de Saberes </button></td>
+          <td><button type="button" class="btn btn-warning" data-toggle="modal" data-target="#ModalModificar">Modificar</button> <button type="button" class="btn btn-danger">Eliminar</button></td>
+        </tr>
+        <tr class="table-secundary">
+          <td>Unidad 5</td>
+          <td><button type="button" class="btn btn-info" data-toggle="modal" data-target="#ModalClases"> Ver Lista de Clases </button></td>
+          <td><button type="button" class="btn btn-success" data-toggle="modal" data-target="#ModalSaberes"> Ver Lista de Saberes </button></td>
+          <td><button type="button" class="btn btn-warning" data-toggle="modal" data-target="#ModalModificar">Modificar</button> <button type="button" class="btn btn-danger">Eliminar</button></td>
+        </tr>
+        <tr class="table-secundary">
+          <td>Unidad 6</td>
+         <td><button type="button" class="btn btn-info" data-toggle="modal" data-target="#ModalClases"> Ver Lista de Clases </button></td>
+          <td><button type="button" class="btn btn-success" data-toggle="modal" data-target="#ModalSaberes"> Ver Lista de Saberes </button></td>
+          <td><button type="button" class="btn btn-warning" data-toggle="modal" data-target="#ModalModificar">Modificar</button> <button type="button" class="btn btn-danger">Eliminar</button></td>
+        </tr>
+        
+      </tbody>
+    </table> 
+
+
+
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+
+    
+    
+    <!--
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.13/js/bootstrap-multiselect.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.13/css/bootstrap-multiselect.css"> -->
+
+  </body>
+
+<!-- ***************************************** MODAL DE CREAR ************************************-->
+
+    <div class="modal fade" id="miModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Unidad</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <p><form>
+                  <fieldset>
+                    <legend>Crear</legend>
+                    
+                    <div class="form-group">
+                      <label for="nombre">Nombre</label>
+                      <input type="Nombre" class="form-control" id="nombreid" placeholder="Nombre">
+                    </div>
+                    
+                   <div class="form-group">
+                      <label for="exampleSelect2">Seleccione las clases</label>
+                      <select multiple="" class="form-control" id="exampleSelect2">
+                        <option>Clase 1</option>
+                        <option>Clase 2</option>
+                        <option>Clase 3</option>
+                        <option>Clase 4</option>
+                        <option>Clase 5</option>
+                      </select>
+                    </div>
+                    <div class="form-group">
+                      <label for="exampleSelect2">Seleccione los Saberes</label>
+                      <select multiple="" class="form-control" id="exampleSelect2">
+                        <option>Saber 1</option>
+                        <option>Saber 2</option>
+                        <option>Saber 3</option>
+                        <option>Saber 4</option>
+                        <option>Saber 5</option>
+                      </select> 
+                      
+                    </div>
+
+                    <!-- 
+                    <div class="container">
+                      <strong>Seleccione las Clases</strong>
+                        <select id="multiple-checkboxes" multiple="multiple">
+                            <option value="Clase 1">Clase 1</option>
+                            <option value="Clase 2">Clase 2</option>
+                            <option value="Clase 3">Clase 3</option>
+                            <option value="Clase 4">Clase 4</option>
+                            <option value="Clase 5">Clase 5</option>
+                        </select>
+                    </div>
+
+                    <div class="container">
+                      <strong>Seleccione los Saberes</strong>
+                        <select id="multiple-checkboxes" multiple="multiple">
+                            <option value="Saber 1">Saber 1</option>
+                            <option value="Saber 2">Saber 2</option>
+                            <option value="Saber 3">Saber 3</option>
+                            <option value="Saber 4">Saber 4</option>
+                            <option value="Saber 5">Saber 5</option>
+                        </select>
+                    </div>-->
+                    
+                   </fieldset>
+                </form></p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary">Guardar</button>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+   <!-- <script type="text/javascript">
+      $(document).ready(function() {
+          $('#multiple-checkboxes').multiselect();
+      });
+    </script>-->
+<!-- ***************************************** MODAL DE MODIFICAR ************************************-->
+    <div class="modal fade" id="ModalModificar" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Unidad</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <p><form>
+                  <fieldset>
+                    <legend>Modificar</legend>
+                    
+                    <div class="form-group">
+                      <label for="nombre">Nombre</label>
+                      <input type="Nombre" class="form-control" id="nombreid" placeholder="Unidad 1">
+                    </div>
+                    <div class="form-group">
+                      <label for="exampleSelect2">Seleccione las clases</label>
+                      <select multiple="" class="form-control" id="exampleSelect2">
+                        <option>Clase 1</option>
+                        <option>Clase 2</option>
+                        <option>Clase 3</option>
+                        <option>Clase 4</option>
+                        <option>Clase 5</option>
+                      </select>
+                    </div>
+                    <div class="form-group">
+                      <label for="exampleSelect2">Seleccione los Saberes</label>
+                      <select multiple="" class="form-control" id="exampleSelect2">
+                        <option>Saber 1</option>
+                        <option>Saber 2</option>
+                        <option>Saber 3</option>
+                        <option>Saber 4</option>
+                        <option>Saber 5</option>
+                        </select>
+                    </div>
+                    
+                   </fieldset>
+                </form></p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary">Guardar</button>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+<!-- ***************************************** MODAL DE CLASES  ************************************-->
+<div class="modal fade" id="ModalClases" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Unidad</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <p> <table class="table table-striped table-hover table-bordered">
+                  <thead class="thead-dark">
+                    <tr>
+                      <th>Fecha</th>
+                      <th>Horario</th>
+                      <th>Tema</th>
+                      <th>Descripcion</th>
+                      
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>04/04/2018</td>
+                      <td>Bloque 3-4</td>
+                      <td>Tema 1</td>
+                      <td>Etiam porta sem malesuada magna mollis euismod.</td>
+                    </tr>
+                    <tr>
+                      <td>11/06/2018</td>
+                      <td>Bloque 3-4</td>
+                      <td>Tema 2</td>
+                      <td>Maecenas sed diam eget risus varius blandit sit amet non magna.</td>
+                    </tr>
+                    <tr >
+                      <td>18/04/2018</td>
+                      <td>Bloque 3-4</td>
+                      <td>Tema 3</td>
+                      <td>Duis mollis, est non commodo luctus, nisi erat porttitor ligula.</td>
+                    </tr>
+                    <tr >
+                      <td>25/04/2018</td>
+                      <td>Bloque 3-4</td>
+                      <td>Tema 4</td>
+                      <td>Nullam id dolor id nibh ultricies vehicula ut id elit.</td>
+                    </tr>
+                    <tr >
+                      <td>05/02/2018</td>
+                      <td>Bloque 3-4</td>
+                      <td>Tema 5</td>
+                      <td>Fusce dapibus, tellus ac cursus commodo, tortor mauris nibh.</td>
+                    </tr>
+                    
+                  </tbody>
+                </table>  </p>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+
+
+<!-- ***************************************** MODAL DE SABERES ************************************-->
+
+<div class="modal fade" id="ModalSaberes" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Unidad</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <p><table class="table table-striped table-hover table-bordered">
+                  <thead class="thead-dark">
+                    <tr>
+                      <th>Código</th>
+                      <th>Descripción</th>
+                      <th>Nivel de Logro</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>0321</td>
+                      <td>Etiam porta sem malesuada magna mollis euismod.</td>
+                      <td>Saber</td>
+                    </tr>
+                    <tr>
+                      <td>0456</td>
+                      <td>Maecenas sed diam eget risus varius blandit sit amet non magna.</td>
+                      <td>Saber, Saber Hacer</td>
+                     
+                    </tr>
+                    <tr >
+                      <td>0789</td>
+                      <td>Duis mollis, est non commodo luctus, nisi erat porttitor ligula.</td>
+                      <td>Saber Ser</td>
+                    </tr>
+                    <tr >
+                      <td>0654</td>
+                      <td>Nullam id dolor id nibh ultricies vehicula ut id elit.</td>
+                      <td>Saber, Saber Ser</td>
+                    </tr>
+                    <tr >
+                      <td>0147</td>
+                      <td>Fusce dapibus, tellus ac cursus commodo, tortor mauris nibh.</td>
+                      <td>Saber, Saber Hacer, Saber Ser</td>
+                    </tr>
+                    
+                  </tbody>
+                </table></p>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+
+
+
+</html>

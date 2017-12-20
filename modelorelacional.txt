@@ -1,0 +1,13 @@
+Competencia(codigo[PK], descripcion, nivel, tiempoDesarrollo, estado)
+Aprendizaje(codigo[PK], categoria, descripcion, codigoCompetencia[FK], estado)
+Saber(codigo[PK, descripcion, nivelLogro, codigoAprendizaje[FK], estado)
+Curso(nombre[PK], horasPresenciales, horasAutonomas, descripcion)
+Unidad(titulo[PK], nombreCurso[FK])
+Evaluacion(codigo, tituloUnidad[FK], codigoSaber[FK], tipo)
+Clase(codigo[PK], fecha, horaInicio, horaTermino, tema, descripcion, tituloUnidad[FK])
+CursoPoseeCompetencia(codigoCompetencia[FK], nombreCurso[FK], nivelLogro)
+UnidadTieneSaber(tituloUnidad[FK], codigoSaber[FK])
+ClasePoseeSaber(codigoClase[FK], codigoSaber[FK])
+
+
+
