@@ -1,0 +1,126 @@
+﻿@using SaberesSyllabus.Models
+
+@model List<SaberesySoluciones.Models.Curso>
+
+@{
+    ViewBag.Title = "Cursos";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#btn-add").click(function () {
+            $("#add").modal({ show: true });
+        });
+        $("#btn-edit").click(function () {
+            $("#edit").modal({ show: true });
+        });
+        $("#btn-delete").click(function () {
+            $("#delete").modal({ show: true });
+        });
+    });
+</script>
+
+
+<table class="table table-striped table-hover table-bordered">
+    <thead class="thead-dark">
+        <tr>
+            <th>Id</th>
+            <th>Nombre</th>
+            <th>Horas Presenciales</th>
+            <th>Horas Autonomas</th>
+            <th>Descripcion</th>
+            <th>Estado</th>
+            <th><button type="button" id="btn-add" data-toggle="modal" data-target="#add" class="btn btn-success btn-sm" style="float:right"><i class="fa fa-plus"></i> Agregar</button></th>
+
+        </tr>
+        @foreach (var cur in Model)
+        {
+            <tr>
+                <td style="text-align:center">@cur.Id</td>
+                <td style="text-align:justify">@cur.Nombre</td>
+                <td>@cur.HorasPresenciales</td>
+                <td style="text-align:justify">@cur.HorasAutonomas</td>
+                <td>@cur.Descripcion</td>
+                <td>@cur.Estado</td>
+
+                <td style="vertical-align: middle">
+                    <a href="" id="btn-edit" class="btn btn-warning btn-sm" data-title="edit" data-toggle="modal" data-target="#edit" onclick="editmsj('@cur.Id', '@cur.Descripcion', '@cur', '@cur')"><i class="fa fa-edit"></i> Modificar</a>
+                    @if (@cur.Estado == EnumEstado.Habilitado)
+                    {
+                        <a href="" id="btn-delete" class="btn btn-danger btn-sm" data-title="desh" data-toggle="modal" data-target="#desh" onclick="deshmsj('@cur.Id')"><i class="fa fa-eye-slash"></i> Deshabilitar</a>
+                    }
+                    @if (@cur.Estado == EnumEstado.Deshabilitado)
+                    {
+                        <a href="" id="btn-delete" class="btn btn-primary btn-sm" data-title="hab" data-toggle="modal" data-target="#hab" onclick="habmsj('@cur.Id')"><i class="fa fa-eye"></i> Habilitar</a>
+                    }
+                </td>
+
+            </tr>
+        }
+</table>
+
+
+<div class="modal fade" id="add" tabindex="-1" role="dialog" aria-labelledby="add" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
+                <h4 class="modal-title custom_align" id="Heading">Agregar un nuevo Curso</h4>
+            </div>
+            @using (Html.BeginForm("Crear", "Cursos", FormMethod.Post, new { enctype = "multipart/form-data", @style = "border:none", @class = "col-offset-2" }))
+            {
+                <div class="modal-body">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label for="Id">Id de Curso:</label>
+                            <input maxlength="255" type="text" min="0" class="form-control" placeholder="Escriba aquí la id del Curso." name="Id" rquired>
+                        </div>
+                        <div class="form-group">
+                            <label for="Nombre">Nombre del Curso:</label>
+                            <input maxlength="255" type="text" min="0" class="form-control" placeholder="Escriba aquí el nombre del Curso." name="Descripcion" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="HorasPresenciales">Numero de horas Presenciales:</label>
+                            <input maxlength="255" type="number" min="0" class="form-control" placeholder="Escriba aquí el numero." name="HorasPresenciales" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="HorasAutonomas">Numero de horas Presenciales:</label>
+                            <input maxlength="255" type="number" min="0" class="form-control" placeholder="Escriba aquí el numero." name="HorasAutonomas" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="Descripcion">Descripcion del Curso:</label>
+                            <input maxlength="255" type="text" min="0" class="form-control" placeholder="Escriba una descripcion del Curso." name="Descripcion" required>
+                        </div>
+                    </div>
+
+                    <input type="hidden" name="Estado" value="Habilitado">
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                    <button type="submit" class="btn btn-primary">Añadir</button>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+
+
+
+<script type="text/javascript">
+    deshmsj = function (idCurso) {
+        document.getElementById("deletesaber").setAttribute("value", idCurso);
+    }
+    habmsj = function (idCurso) {
+        document.getElementById("habsaber").setAttribute("value", idCurso);
+    }
+
+    editmsj = function (Id, descrp, nivel) {
+        document.getElementById("editsaber").setAttribute("value", Id);
+        document.getElementById("editdescripcion").setAttribute("value", descrp);
+        $("#nivelid").append(nivel);
+    }
+</script>

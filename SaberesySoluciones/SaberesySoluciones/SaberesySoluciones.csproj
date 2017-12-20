@@ -168,6 +168,7 @@
     <Compile Include="Controllers\CompetenciaEnAprendizajeController.cs" />
     <Compile Include="Controllers\ClasesController.cs" />
     <Compile Include="Controllers\CompetenciasController.cs" />
+    <Compile Include="Controllers\CursosController.cs" />
     <Compile Include="Controllers\EvaluacionUnidadController.cs" />
     <Compile Include="Controllers\EvaluacionController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -199,7 +200,7 @@
     <Compile Include="Repositories\Aprendizajes.cs" />
     <Compile Include="Repositories\Clase.cs" />
     <Compile Include="Repositories\Competencias.cs" />
-    <Compile Include="Repositories\Curso.cs" />
+    <Compile Include="Repositories\Cursos.cs" />
     <Compile Include="Repositories\DataSource.cs" />
     <Compile Include="Repositories\Encargado.cs" />
     <Compile Include="Repositories\Evaluaciones.cs" />
@@ -274,6 +275,7 @@
     <Content Include="Views\SaberesLogrados\SubTablaAprendizaje.cshtml" />
     <Content Include="Views\SaberesLogrados\SubTablaSaberes.cshtml" />
     <Content Include="Views\EvaluacionUnidad\Index.cshtml" />
+    <Content Include="Views\Cursos\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
