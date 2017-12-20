@@ -28,18 +28,14 @@ namespace SaberesSyllabus.Repositories
                 command.Parameters.Add(new MySqlParameter() { ParameterName = "in_horasAutonomas", Direction = System.Data.ParameterDirection.Input, Value = curso.HorasAutonomas });
                 command.Parameters.Add(new MySqlParameter() { ParameterName = "in_descripcion", Direction = System.Data.ParameterDirection.Input, Value = curso.Descripcion.ToString() });
                 command.Parameters.Add(new MySqlParameter() { ParameterName = "in_estado", Direction = System.Data.ParameterDirection.Input, Value = curso.Estado.ToString() });
-                command.Parameters.Add(new MySqlParameter() { ParameterName = "out_id", Direction = System.Data.ParameterDirection.Output, Value = -1 });
 
-                var datos = DataSource.ExecuteProcedure(command);
+                DataSource.ExecuteProcedure(command);
 
-                curso.Id = datos.Parameters["out_id"].Value.ToString();
-                Console.WriteLine("retornando el curso creado");
                 return curso;
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex.ToString());
-                Console.WriteLine("hay error");
                 return null;
             }
 

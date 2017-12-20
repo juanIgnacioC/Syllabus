@@ -15,6 +15,7 @@ namespace SaberesySoluciones.Models
         public List<Saber> Saberes { get; set; }
         public EnumEstado Estado { get; set;}
         public int PorcentajeLogro { get; set;}
+        public Boolean Check { get; set; }
 
         public Aprendizaje()
         {

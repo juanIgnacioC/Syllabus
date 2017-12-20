@@ -46,7 +46,7 @@
                 <td>@cur.Estado</td>
 
                 <td style="vertical-align: middle">
-                    <a href="" id="btn-edit" class="btn btn-warning btn-sm" data-title="edit" data-toggle="modal" data-target="#edit" onclick="editmsj('@cur.Id', '@cur.Descripcion', '@cur', '@cur')"><i class="fa fa-edit"></i> Modificar</a>
+                    <a href="" id="btn-edit" class="btn btn-warning btn-sm" data-title="edit" data-toggle="modal" data-target="#edit" onclick="editmsj('@cur.Id', '@cur.Nombre', '@cur.', '@cur')"><i class="fa fa-edit"></i> Modificar</a>
                     @if (@cur.Estado == EnumEstado.Habilitado)
                     {
                         <a href="" id="btn-delete" class="btn btn-danger btn-sm" data-title="desh" data-toggle="modal" data-target="#desh" onclick="deshmsj('@cur.Id')"><i class="fa fa-eye-slash"></i> Deshabilitar</a>
@@ -79,7 +79,7 @@
                         </div>
                         <div class="form-group">
                             <label for="Nombre">Nombre del Curso:</label>
-                            <input maxlength="255" type="text" min="0" class="form-control" placeholder="Escriba aquí el nombre del Curso." name="Descripcion" required>
+                            <input maxlength="255" type="text" min="0" class="form-control" placeholder="Escriba aquí el nombre del Curso." name="Nombre" required>
                         </div>
                         <div class="form-group">
                             <label for="HorasPresenciales">Numero de horas Presenciales:</label>
