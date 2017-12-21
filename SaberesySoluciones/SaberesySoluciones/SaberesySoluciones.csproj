@@ -274,6 +274,7 @@
     <Content Include="Views\SaberesLogrados\SubTablaAprendizaje.cshtml" />
     <Content Include="Views\SaberesLogrados\SubTablaSaberes.cshtml" />
     <Content Include="Views\EvaluacionUnidad\Index.cshtml" />
+    <Content Include="Views\Aprendizajes\addSaber.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
