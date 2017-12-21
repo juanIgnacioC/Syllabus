@@ -34,6 +34,18 @@ namespace SaberesySoluciones.Controllers
 
             return View(unidades);
         }
+
+        [HttpPost]
+        public ActionResult AgregarSaber(String codigoU, String codigoS)
+        {
+            if (codigoU != null)
+            {
+                var agregar = Unidades.CrearSaberEnUnidad(codigoU, codigoS);
+            }
+
+            return RedirectToAction("Index", "SaberEnUnidad");
+        }
+
         /*
         [HttpPost]
         public ActionResult CargarUnidades(int codigoSaber)
@@ -48,16 +60,7 @@ namespace SaberesySoluciones.Controllers
             return RedirectToAction("Index", "AprendizajeEnSaber");
         }
 
-        [HttpPost]
-        public ActionResult AgregarSaber(String codigo)
-        {
-            if (aprendizajeSaber.CodigoAprendizaje != null)
-            {
-                var agregar = Saberes.CrearSaberEnAprendizaje(aprendizajeSaber.CodigoAprendizaje, codigo);
-            }
 
-            return RedirectToAction("Index", "AprendizajeEnSaber");
-        }
 
         [HttpPost]
         public ActionResult EliminarSaber(String codigo)

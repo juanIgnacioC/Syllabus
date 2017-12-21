@@ -34,6 +34,17 @@ namespace SaberesySoluciones.Controllers
 
             return View(competencias);
         }
+
+        [HttpPost]
+        public ActionResult AgregarAprendizaje(String codigoC, String codigoA)
+        {
+            if (codigoC != null)
+            {
+                var agregar = Aprendizajes.CrearAprendizajeEncompetencia(codigoC, codigoA);
+            }
+
+            return RedirectToAction("Index", "CompetenciaEnAprendizaje");
+        }
         /*
         [HttpPost]
         public ActionResult CargarCompetenciaes(int codigoSaber)

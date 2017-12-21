@@ -24,6 +24,7 @@
 <table class="table table-striped table-hover table-bordered">
     <thead class="thead-dark">
         <tr>
+            <th>Id</th>
             <th>Código</th>
             <th>Descripción</th>
             <th>Nivel de Saber</th>
@@ -34,6 +35,7 @@
         @foreach (var sabe in Model)
         {
             <tr>
+                <td>@sabe.Id</td>
                 <td style="text-align:center">@sabe.Codigo</td>
                 <td style="text-align:justify">@sabe.Descripcion</td>
                 <td>@sabe.Logro</td>
