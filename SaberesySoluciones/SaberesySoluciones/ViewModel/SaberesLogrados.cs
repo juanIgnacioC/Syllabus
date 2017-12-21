@@ -24,7 +24,7 @@ namespace SaberesySoluciones.ViewModel
             this.competencias = new List<Competencia>();
         }
 
-        public static List<String> LeerTodo()
+        public static List<Competencia> LeerTodo()
         {
             try
             {
@@ -32,7 +32,7 @@ namespace SaberesySoluciones.ViewModel
                 var commandC = new MySqlCommand() { CommandText = "sp_competencias_leertodo", CommandType = System.Data.CommandType.StoredProcedure };
                 var datosC = DataSource.GetDataSet(commandC);
                 
-                List<String> componentes = new List<String>();
+                List<Competencia> componentes = new List<Competencia>();
 
                 if (datosC.Tables[0].Rows.Count > 0)
                 {
@@ -65,22 +65,25 @@ namespace SaberesySoluciones.ViewModel
                         List<int> porcentajesA = new List<int>();
                         System.Diagnostics.Debug.WriteLine("A");
 
+                        List<Aprendizaje> aprendizajes = new List<Aprendizaje>();
+
                         if (datosA.Tables[0].Rows.Count > 0)
                         {
-                            System.Diagnostics.Debug.WriteLine("leeeeeeeer Aprendizaes");
                             foreach (System.Data.DataRow rowA in datosA.Tables[0].Rows)
                             {
                                 var prodDataA = rowA;
 
-                                Enum.TryParse(prodDataA["estado"].ToString(), out EnumEstado EEstado);
+                                Enum.TryParse(prodData["estado"].ToString(), out EnumEstado EEstado);
                                 var aprendizaje = new Aprendizaje()
                                 {
                                     Codigo = Convert.ToInt32(prodData["codigo"]),
+                                    Categoria = prodData["categoria"].ToString(),
+                                    SubCategoria = prodData["subCategoria"].ToString(),
                                     Descripcion = prodData["descripcion"].ToString(),
                                     PorcentajeLogro = Convert.ToInt32(prodData["porcentajeLogro"]),
                                     Estado = EEstado
                                 };
-                                
+
                                 var commandS = new MySqlCommand() { CommandText = "sp_aprendizajes_leersubsaberes", CommandType = System.Data.CommandType.StoredProcedure };
                                 commandA.Parameters.Add(new MySqlParameter() { ParameterName = "in_codigo", Direction = System.Data.ParameterDirection.Input, Value = aprendizaje.Codigo });
                                 var datosS = DataSource.GetDataSet(commandA);
@@ -89,32 +92,33 @@ namespace SaberesySoluciones.ViewModel
 
                                 int nSaberes = 0;
                                 List<Saber> saberes = new List<Saber>();
-                                foreach (System.Data.DataRow rowS in datosS.Tables[0].Rows)
+                                if (datosS.Tables[0].Rows.Count > 0)
                                 {
-                                    System.Diagnostics.Debug.WriteLine("leeeeeeeer Saberes");
-                                    var prodDataS = rowS;
-
-                                    Enum.TryParse(prodDataS["nivelLogro"].ToString(), out EnumLogro ELogro);
-                                    Enum.TryParse(prodDataS["estado"].ToString(), out EnumEstado EEEstado);
-                                    var saber = new Saber()
+                                    System.Diagnostics.Debug.WriteLine("leeeeeeeer Saberes");
+                                    foreach (System.Data.DataRow rowS in datosS.Tables[0].Rows)
                                     {
-                                        Codigo = Convert.ToString(prodData["codigo"]),
-                                        Descripcion = prodData["descripcion"].ToString(),
-                                        Logro = ELogro,
-                                        Estado = EEEstado,
-                                        PorcentajeLogro = prodData["porcentajeLogro"].ToString(),
-                                        Id = Convert.ToInt32(prodData["id"])
-                                    };
 
-                                    porcentajesS.Add(Convert.ToInt32(saber.PorcentajeLogro));
-                                    nSaberes++;
+                                        var prodDataS = rowS;
 
-                                    //agregar saber a componentes
-                                    componentes.Add("Saber");
-                                    componentes.Add(saber.Codigo);
-                                    componentes.Add(saber.Descripcion);
-                                    componentes.Add(saber.PorcentajeLogro);
+                                        Enum.TryParse(prodDataS["nivelLogro"].ToString(), out EnumLogro ELogro);
+                                        Enum.TryParse(prodDataS["estado"].ToString(), out EnumEstado EEEstado);
+                                        var saber = new Saber()
+                                        {
+                                            Codigo = Convert.ToString(prodData["codigo"]),
+                                            Descripcion = prodData["descripcion"].ToString(),
+                                            Logro = ELogro,
+                                            Estado = EEEstado,
+                                            PorcentajeLogro = prodData["porcentajeLogro"].ToString(),
+                                            Id = Convert.ToInt32(prodData["id"])
+                                        };
 
+                                        porcentajesS.Add(Convert.ToInt32(saber.PorcentajeLogro));
+                                        nSaberes++;
+
+                                        //agregar saber a componentes
+                                        saberes.Add(saber);
+
+                                    }
                                 }
                                 //calculo de porcentaje del aprendizaje actual
                                 int porcentajeAprendizaje = calcularPorcentaje(porcentajesS);
@@ -123,11 +127,8 @@ namespace SaberesySoluciones.ViewModel
                                 nAprendizajes++;
 
                                 //se agregan los aprendizajes a los componentes
-                                componentes.Add("Aprendizaje");
-                                componentes.Add(Convert.ToString(nSaberes));
-                                componentes.Add(Convert.ToString(aprendizaje.Codigo));
-                                componentes.Add(aprendizaje.Descripcion);
-                                componentes.Add(Convert.ToString(porcentajeAprendizaje));
+                                aprendizaje.PorcentajeLogro = porcentajeAprendizaje;
+                                aprendizajes.Add(aprendizaje);
 
                             }
                         }
@@ -135,15 +136,13 @@ namespace SaberesySoluciones.ViewModel
                         //calculo de porcentaje de la competencia actual
                         int porcentajeCompetencia = calcularPorcentaje(porcentajesA);
 
-                        componentes.Add("Competencia");
-                        componentes.Add(Convert.ToString(nAprendizajes));
-                        componentes.Add(competencia.Nombre);
-                        componentes.Add(competencia.Descripcion);
-                        componentes.Add(Convert.ToString(porcentajeCompetencia));
+                        competencia.PorcentajeLogro = porcentajeCompetencia;
+                        componentes.Add(competencia);
                         
                     }
                 }
-                
+                //retorna lista de componentes completa
+                return componentes;
             }
             catch (Exception ex)
             {
