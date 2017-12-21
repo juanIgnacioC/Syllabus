@@ -37,6 +37,15 @@ namespace SaberesySoluciones.Controllers
 
             return View(aprendizajes);
         }
+        /*
+        [HttpPost]
+        public ActionResult CrearSaber(Saber saber, Aprendizaje aprendizaje)
+        {
+            saber = Aprendizajes.Crear(aprendizaje);
+            return RedirectToAction("Index", "Aprendizajes");
+        }*/
+
+
 
         [HttpPost]
         public ActionResult CargarSaberes(String codigoAprendizaje)
