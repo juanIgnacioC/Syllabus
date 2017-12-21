@@ -33,7 +33,7 @@
                     @Html.ActionLink("Gestión de Saberes", "Index", "Saberes", null, new { @class = "nav-link" })
                 </li>
                 <li class="nav-item">
-                    @Html.ActionLink("Evaluaciones", "Index", "Evaluacion", null, new {@class = "nav-link"})
+                    @Html.ActionLink("Evaluaciones", "Index", "Evaluacion", null, new { @class = "nav-link" })
                 </li>
                 <li class="nav-item">
                     @Html.ActionLink("Gestion de Cursos", "Index", "Cursos", null, new { @class = "nav-link" })
@@ -42,7 +42,13 @@
                     @Html.ActionLink("Gestion de Clases", "Index", "Clases", null, new { @class = "nav-link" })
                 </li>
                 <li class="nav-item">
+                    @Html.ActionLink("Gestión de Competencias en Aprendizajes", "Index", "CompetenciaEnAprendizaje", null, new { @class = "nav-link" })
+                </li>
+                <li class="nav-item">
                     @Html.ActionLink("Gestión de Aprendizajes en Saberes", "Index", "AprendizajeEnSaber", null, new { @class = "nav-link" })
+                </li>
+                <li class="nav-item">
+                    @Html.ActionLink("Gestión de Unidades en Saberes", "Index", "SaberEnUnidad", null, new { @class = "nav-link" })
                 </li>
                 <li class="nav-item">
                     @Html.ActionLink("Saberes Logrados", "Index", "SaberesLogrados", null, new { @class = "nav-link" })
