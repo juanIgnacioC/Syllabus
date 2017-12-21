@@ -302,7 +302,7 @@ namespace SaberesySoluciones.Repositories
 
                 var command = new MySqlCommand() { CommandText = "sp_saber_crearrelacion", CommandType = System.Data.CommandType.StoredProcedure };
                 command.Parameters.Add(new MySqlParameter() { ParameterName = "in_codigoAprendizaje", Direction = System.Data.ParameterDirection.Input, Value = codigoA});
-                command.Parameters.Add(new MySqlParameter() { ParameterName = "in_codigoSaber", Direction = System.Data.ParameterDirection.Input, Value = codigoS });
+                command.Parameters.Add(new MySqlParameter() { ParameterName = "in_idSaber", Direction = System.Data.ParameterDirection.Input, Value = codigoS });
                 DataSource.ExecuteProcedure(command);
 
                 return true;
