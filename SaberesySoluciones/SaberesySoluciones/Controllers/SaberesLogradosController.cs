@@ -23,6 +23,7 @@ namespace SaberesySoluciones.Controllers
             {
                 finalcompetencias = new List<Competencia>();
             }
+
             foreach (Competencia comp in finalcompetencias)
             {
                 comp.Aprendizajes = Competencias.LeerSubAprendizajes(comp.Codigo);
@@ -41,9 +42,33 @@ namespace SaberesySoluciones.Controllers
                     }
                 }
             }
-            
 
-            return View(finalcompetencias);
+                /*List<Competencia> finalcompetencias = SaberesLogrados.LeerTodo();
+                if (finalcompetencias == null)
+                {
+                    finalcompetencias = new List<Competencia>();
+                }
+                foreach (Competencia comp in finalcompetencias)
+                {
+                    comp.Aprendizajes = Competencias.LeerSubAprendizajes(comp.Codigo);
+
+                    if (comp.Aprendizajes == null)
+                    {
+                        comp.Aprendizajes = new List<Aprendizaje>();
+                    }
+                    foreach (Aprendizaje apr in comp.Aprendizajes)
+                    {
+                        apr.Saberes = Aprendizajes.LeerSubSaberes(apr.Codigo);
+
+                        if (apr.Saberes == null)
+                        {
+                            apr.Saberes = new List<Saber>();
+                        }
+                    }
+                }*/
+
+
+                return View(finalcompetencias);
         }
 
         public ActionResult SubTablaAprendizaje()

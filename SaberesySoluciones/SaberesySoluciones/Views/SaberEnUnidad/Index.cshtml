@@ -27,6 +27,7 @@
                 <th>Código</th>
                 <th>Descripción</th>
                 <th></th>
+                <th></th>
             </tr>
         </thead>
         @foreach (Saber subcategoria in unidad.Saberes)
@@ -34,6 +35,7 @@
             <tr>
                 <td>@subcategoria.Codigo</td>
                 <td style="text-align: justify">@subcategoria.Descripcion</td>
+                <td><input type="checkbox" id="cbox1" value="first_checkbox">Saber logrado</td>
                 <td style="vertical-align: middle; white-space: nowrap; text-align: right"></td>
             </tr>
         }
