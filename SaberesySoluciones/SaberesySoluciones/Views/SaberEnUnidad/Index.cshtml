@@ -1,0 +1,116 @@
+﻿@using SaberesSyllabus.Repositories
+@using SaberesySoluciones.Models
+@using SaberesSyllabus.Models
+@model List<Unidad>
+
+
+<h1>Gestión de Unidades en Saberes</h1>
+
+<br />
+
+@foreach (Unidad unidad in Model)
+{
+    <br />
+
+    <button type="button" data-toggle="modal" data-target="#modalAddSaber" class="btn btn-success btn-sm" onclick="addSaber('@unidad.Id')">
+        <i class="fa fa-plus"></i> Agregar Saber
+    </button>
+
+    <h4>
+        Unidad - Codigo @unidad.Id - @unidad.Titulo
+    </h4>
+
+    <!--Table content-->
+    <table class="table table-striped table-hover table-bordered">
+        <thead class="thead-dark">
+            <tr>
+                <th>Código</th>
+                <th>Descripción</th>
+                <th></th>
+            </tr>
+        </thead>
+        @foreach (Saber subcategoria in unidad.Saberes)
+        {
+            <tr>
+                <td>@subcategoria.Codigo</td>
+                <td style="text-align: justify">@subcategoria.Descripcion</td>
+                <td style="vertical-align: middle; white-space: nowrap; text-align: right"></td>
+            </tr>
+        }
+    </table>
+}
+
+<div class="modal fade" id="add" tabindex="-1" role="dialog" aria-labelledby="add" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
+                <h4 class="modal-title custom_align" id="Heading">Agregar un nuevo Saber</h4>
+            </div>
+            @using (Html.BeginForm("Crear", "Saberes", FormMethod.Post, new { enctype = "multipart/form-data", @style = "border:none", @class = "col-offset-2" }))
+            {
+                <div class="modal-body">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label for="Codigo">Codigo del Saber:</label>
+                            <input maxlength="255" type="text" min="0" class="form-control" placeholder="Escriba aquí el codigo del Saber." name="Codigo" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="Nombre">Descripción del Saber:</label>
+                            <input maxlength="255" type="text" min="0" class="form-control" placeholder="Escriba aquí la descripción del Saber." name="Descripcion" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="Nombre">Nivel de logro:</label>
+                            <select class="form-control" id="Logro" name="Logro" required>
+                                <option value="Saber">Saber</option>
+                                <option value="SaberHacer">Saber Hacer</option>
+                                <option value="SaberSer">Saber Ser</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="Porcentaje">Porcentaje del Saber:</label>
+                            <input maxlength="255" type="text" min="0" class="form-control" placeholder="Escriba aquí el porcentaje del Saber." name="PorcentajeLogro" required>
+                        </div>
+                    </div>
+                    <input type="hidden" name="Id" value="-1">
+                    <input type="hidden" name="Estado" value="Habilitado">
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                    <button type="submit" class="btn btn-primary">Añadir</button>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+
+<!--Scripts-->
+<script type="text/javascript">
+
+    editCat = function (cat) {
+        document.getElementById("categoriaprev").setAttribute("value", cat);
+    }
+
+    editSubcat = function (subcat) {
+        document.getElementById("subcategoriaprev").setAttribute("value", subcat);
+    }
+
+    addSubcat = function (cat) {
+        document.getElementById("categoria").setAttribute("value", cat);
+    }
+
+    addSaber = function (subcat) {
+        document.getElementById("unidad").setAttribute("value", subcat);
+    }
+    editApren = function (cod, desc) {
+        document.getElementById("editaprencod").setAttribute("value", cod);
+        document.getElementById("editaprendesc").setAttribute("value", desc);
+    }
+
+</script>
+
+
+
+<!--Modals-->

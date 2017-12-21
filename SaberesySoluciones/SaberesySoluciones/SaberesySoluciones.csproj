@@ -173,6 +173,7 @@
     <Compile Include="Controllers\EvaluacionController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\SaberesController.cs" />
+    <Compile Include="Controllers\SaberEnUnidadController.cs" />
     <Compile Include="Controllers\SaberesLogradosController.cs" />
     <Compile Include="Controllers\UnidadesController.cs" />
     <Compile Include="Global.asax.cs">
@@ -208,6 +209,7 @@
     <Compile Include="Repositories\Unidades.cs" />
     <Compile Include="ViewModel\AprendizajeEnSaberesController.cs" />
     <Compile Include="ViewModel\CompetenciaEnAprendizajeController.cs" />
+    <Compile Include="ViewModel\SaberEnUnidadesController.cs" />
     <Compile Include="ViewModel\SaberesLogrados.cs" />
     <Compile Include="ViewModel\UnionEvaluacionUnidad.cs" />
   </ItemGroup>
@@ -277,6 +279,7 @@
     <Content Include="Views\EvaluacionUnidad\Index.cshtml" />
     <Content Include="Views\Cursos\Index.cshtml" />
     <Content Include="Views\Aprendizajes\addSaber.cshtml" />
+    <Content Include="Views\SaberEnUnidad\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
