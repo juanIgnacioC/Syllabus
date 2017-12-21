@@ -8,3 +8,8 @@ INSERT INTO Curso (id, nombre, horasPresenciales, horasAutonomas, descripcion, e
 INSERT INTO Curso (id, nombre, horasPresenciales, horasAutonomas, descripcion, estado) VALUES ('8', 'Redes 2', 10, 90, '...', "Habilitado");
 INSERT INTO Curso (id, nombre, horasPresenciales, horasAutonomas, descripcion, estado) VALUES ('9', 'Algoritmos y Estructuras de Datos', 10, 90, '...', "Habilitado");
 INSERT INTO Curso (id, nombre, horasPresenciales, horasAutonomas, descripcion, estado) VALUES ('10', 'El regreso de Calculo 3', 10, 90, '...', "Deshabilitado");
+INSERT INTO syllabus.curso (id, nombre, horasPresenciales, horasAutonomas, descripcion, estado) VALUES ('11', "Introducion a la ICC", 5, 5, "Bienvenido a icc", "Habilitado");
+INSERT INTO syllabus.curso (id, nombre, horasPresenciales, horasAutonomas, descripcion, estado) VALUES ('12', "IHC", 5, 5, "Bienvenido a ihc", "Habilitado");
+INSERT INTO syllabus.curso (id, nombre, horasPresenciales, horasAutonomas, descripcion, estado) VALUES ('13', "Modelos discretos", 5, 5, "rapa 1", "Habilitado");
+INSERT INTO syllabus.curso (id, nombre, horasPresenciales, horasAutonomas, descripcion, estado) VALUES ('14', "Inteligencia artificial", 5, 5, "Cosas locas pasan aquí", "Habilitado");
+INSERT INTO syllabus.curso (id, nombre, horasPresenciales, horasAutonomas, descripcion, estado) VALUES ('15', "Proyecto de titulo", 5, 5, "Adios de icc", "Habilitado");

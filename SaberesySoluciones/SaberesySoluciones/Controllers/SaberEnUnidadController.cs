@@ -9,39 +9,39 @@ using System.Web.Mvc;
 
 namespace SaberesySoluciones.Controllers
 {
-    public class CompetenciaEnAprendizajeController : Controller
+    public class SaberEnUnidadController : Controller
     {
-        // GET: CompetenciaEnAprendizaje
+        // GET: AprendizajeEnSaber
         public ActionResult Index()
         {
-            List<Competencia> competencias = Competencias.LeerTodo();
-            if (competencias == null)
+            List<Unidad> unidades = Unidades.LeerTodo();
+            if (unidades == null)
             {
-                competencias = new List<Competencia>();
+                unidades = new List<Unidad>();
             }
-            foreach (Competencia comp in competencias)
+            foreach (Unidad uni in unidades)
             {
-                comp.Aprendizajes = Competencias.LeerSubAprendizajes(comp.Codigo);
+                uni.Saberes = Unidades.LeerSubSaberes(uni.Id);
 
                 //Ordenar las SubSaberes según el codigo para evitar que se vean desordenadas :)
                 //apr.Saberes.Sort((x, y) => x.Codigo.CompareTo(y.Codigo));
 
-                if (comp.Aprendizajes == null)
+                if (uni.Saberes == null)
                 {
-                    comp.Aprendizajes = new List<Aprendizaje>();
+                    uni.Saberes = new List<Saber>();
                 }
             }
 
-            return View(competencias);
+            return View(unidades);
         }
         /*
         [HttpPost]
-        public ActionResult CargarCompetenciaes(int codigoSaber)
+        public ActionResult CargarUnidades(int codigoSaber)
         {
-            var competencias = Competenciaes.LeerSubSaberes(codigoSaber);
-            if (competencias != null)
+            var unidades = Unidades.LeerSubSaberes(codigoSaber);
+            if (unidades != null)
             {
-                saberCompetencia.CompetenciaDeSaber = ;
+                saberUnidad.UnidadDeSaber = ;
             }
             aprendizajeSaber.CodigoAprendizaje = codigoAprendizaje;
 

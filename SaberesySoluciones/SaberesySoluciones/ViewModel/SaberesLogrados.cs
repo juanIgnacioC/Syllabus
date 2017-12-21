@@ -36,6 +36,7 @@ namespace SaberesySoluciones.ViewModel
 
                 if (datosC.Tables[0].Rows.Count > 0)
                 {
+                    System.Diagnostics.Debug.WriteLine("leeeeeeeer Competencias");
 
                     foreach (System.Data.DataRow row in datosC.Tables[0].Rows)
                     {
@@ -56,7 +57,7 @@ namespace SaberesySoluciones.ViewModel
                         System.Diagnostics.Debug.WriteLine("codC: " + competencia.Codigo);
 
 
-                        var commandA = new MySqlCommand() { CommandText = "sp_aprendizaje_logrado", CommandType = System.Data.CommandType.StoredProcedure };
+                        var commandA = new MySqlCommand() { CommandText = "sp_competencias_leersubaprendizajes", CommandType = System.Data.CommandType.StoredProcedure };
                         commandA.Parameters.Add(new MySqlParameter() { ParameterName = "in_codigo", Direction = System.Data.ParameterDirection.Input, Value = competencia.Codigo });
                         var datosA = DataSource.GetDataSet(commandA);
 
@@ -66,6 +67,7 @@ namespace SaberesySoluciones.ViewModel
 
                         if (datosA.Tables[0].Rows.Count > 0)
                         {
+                            System.Diagnostics.Debug.WriteLine("leeeeeeeer Aprendizaes");
                             foreach (System.Data.DataRow rowA in datosA.Tables[0].Rows)
                             {
                                 var prodDataA = rowA;
@@ -79,7 +81,7 @@ namespace SaberesySoluciones.ViewModel
                                     Estado = EEstado
                                 };
                                 
-                                var commandS = new MySqlCommand() { CommandText = "sp_saber_logrado_leertodo", CommandType = System.Data.CommandType.StoredProcedure };
+                                var commandS = new MySqlCommand() { CommandText = "sp_aprendizajes_leersubsaberes", CommandType = System.Data.CommandType.StoredProcedure };
                                 commandA.Parameters.Add(new MySqlParameter() { ParameterName = "in_codigo", Direction = System.Data.ParameterDirection.Input, Value = aprendizaje.Codigo });
                                 var datosS = DataSource.GetDataSet(commandA);
 
@@ -89,6 +91,7 @@ namespace SaberesySoluciones.ViewModel
                                 List<Saber> saberes = new List<Saber>();
                                 foreach (System.Data.DataRow rowS in datosS.Tables[0].Rows)
                                 {
+                                    System.Diagnostics.Debug.WriteLine("leeeeeeeer Saberes");
                                     var prodDataS = rowS;
 
                                     Enum.TryParse(prodDataS["nivelLogro"].ToString(), out EnumLogro ELogro);

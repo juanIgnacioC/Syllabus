@@ -1,6 +1,7 @@
 ﻿using MySql.Data.MySqlClient;
-using SaberesySoluciones.Models;
+using SaberesSyllabus.Models;
 using SaberesySoluciones.Repositories;
+using SaberesySoluciones.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -37,6 +38,46 @@ namespace SaberesySoluciones.Repositories
                 Console.WriteLine(ex.ToString());
                 return null;
             }
+        }
+
+        internal static List<Aprendizaje> LeerSubAprendizajes(int codigo)
+        {
+            try
+            {
+                var command = new MySqlCommand() { CommandText = "sp_competencias_leersubaprendizajes", CommandType = System.Data.CommandType.StoredProcedure };
+                command.Parameters.Add(new MySqlParameter() { ParameterName = "in_codigo", Direction = System.Data.ParameterDirection.Input, Value = codigo });
+                var datos = DataSource.GetDataSet(command);
+
+                List<Aprendizaje> aprendizajes = new List<Aprendizaje>();
+                if (datos.Tables[0].Rows.Count > 0)
+                {
+                    foreach (System.Data.DataRow row in datos.Tables[0].Rows)
+                    {
+                        var prodData = row;
+                        Enum.TryParse(prodData["estado"].ToString(), out EnumEstado EEstado);
+                        var aprendizaje = new Aprendizaje()
+                        {
+                            Codigo = Convert.ToInt32(prodData["codigo"]),
+                            Categoria = prodData["categoria"].ToString(),
+                            SubCategoria = prodData["subCategoria"].ToString(),
+                            Descripcion = prodData["descripcion"].ToString(),
+                            PorcentajeLogro = Convert.ToInt32(prodData["porcentajeLogro"]),
+                            Estado = EEstado
+                        };
+                        aprendizajes.Add(aprendizaje);
+                    }
+                }
+                return aprendizajes;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+            }
+            finally
+            {
+
+            }
+            return null;
         }
 
         public static bool Deshabilitar(int codigo)

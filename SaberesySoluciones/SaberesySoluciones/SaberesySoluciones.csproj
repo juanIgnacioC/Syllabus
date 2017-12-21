@@ -168,10 +168,12 @@
     <Compile Include="Controllers\CompetenciaEnAprendizajeController.cs" />
     <Compile Include="Controllers\ClasesController.cs" />
     <Compile Include="Controllers\CompetenciasController.cs" />
+    <Compile Include="Controllers\CursosController.cs" />
     <Compile Include="Controllers\EvaluacionUnidadController.cs" />
     <Compile Include="Controllers\EvaluacionController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\SaberesController.cs" />
+    <Compile Include="Controllers\SaberEnUnidadController.cs" />
     <Compile Include="Controllers\SaberesLogradosController.cs" />
     <Compile Include="Controllers\UnidadesController.cs" />
     <Compile Include="Global.asax.cs">
@@ -199,7 +201,7 @@
     <Compile Include="Repositories\Aprendizajes.cs" />
     <Compile Include="Repositories\Clase.cs" />
     <Compile Include="Repositories\Competencias.cs" />
-    <Compile Include="Repositories\Curso.cs" />
+    <Compile Include="Repositories\Cursos.cs" />
     <Compile Include="Repositories\DataSource.cs" />
     <Compile Include="Repositories\Encargado.cs" />
     <Compile Include="Repositories\Evaluaciones.cs" />
@@ -207,6 +209,7 @@
     <Compile Include="Repositories\Unidades.cs" />
     <Compile Include="ViewModel\AprendizajeEnSaberesController.cs" />
     <Compile Include="ViewModel\CompetenciaEnAprendizajeController.cs" />
+    <Compile Include="ViewModel\SaberEnUnidadesController.cs" />
     <Compile Include="ViewModel\SaberesLogrados.cs" />
     <Compile Include="ViewModel\UnionEvaluacionUnidad.cs" />
   </ItemGroup>
@@ -274,11 +277,15 @@
     <Content Include="Views\SaberesLogrados\SubTablaAprendizaje.cshtml" />
     <Content Include="Views\SaberesLogrados\SubTablaSaberes.cshtml" />
     <Content Include="Views\EvaluacionUnidad\Index.cshtml" />
+    <Content Include="Views\Cursos\Index.cshtml" />
+    <Content Include="Views\Aprendizajes\addSaber.cshtml" />
+    <Content Include="Views\SaberEnUnidad\Index.cshtml" />
     <Content Include="Views\AprendizajeEnSaber\addSaber.cshtml" />
     <Content Include="Views\AprendizajeEnSaber\_AddSaber.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\CompetenciaEn\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

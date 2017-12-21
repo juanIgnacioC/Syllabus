@@ -1,23 +1,23 @@
 ﻿@using SaberesSyllabus.Repositories
 @using SaberesySoluciones.Models
 @using SaberesSyllabus.Models
-@model List<Competencia>
+@model List<Unidad>
 
 
-<h1>Gestión de Competencias en Aprendizajes</h1>
+<h1>Gestión de Unidades en Saberes</h1>
 
 <br />
 
-@foreach (Competencia competencia in Model)
+@foreach (Unidad unidad in Model)
 {
     <br />
 
-    <button type="button" data-toggle="modal" data-target="#modalAddAprendizaje" class="btn btn-success btn-sm" onclick="addAprendizaje('@competencia.Codigo')">
-        <i class="fa fa-plus"></i> Agregar Aprendizaje
+    <button type="button" data-toggle="modal" data-target="#modalAddSaber" class="btn btn-success btn-sm" onclick="addSaber('@unidad.Id')">
+        <i class="fa fa-plus"></i> Agregar Saber
     </button>
 
     <h4>
-        Competencia - Codigo @competencia.Codigo - @competencia.Descripcion
+        Unidad - Codigo @unidad.Id - @unidad.Titulo
     </h4>
 
     <!--Table content-->
@@ -29,7 +29,7 @@
                 <th></th>
             </tr>
         </thead>
-        @foreach (Aprendizaje subcategoria in competencia.Aprendizajes)
+        @foreach (Saber subcategoria in unidad.Saberes)
         {
             <tr>
                 <td>@subcategoria.Codigo</td>
@@ -45,31 +45,31 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
-                <h4 class="modal-title custom_align" id="Heading">Agregar un nuevo Aprendizaje</h4>
+                <h4 class="modal-title custom_align" id="Heading">Agregar un nuevo Saber</h4>
             </div>
-            @using (Html.BeginForm("Crear", "Aprendizajes", FormMethod.Post, new { enctype = "multipart/form-data", @style = "border:none", @class = "col-offset-2" }))
+            @using (Html.BeginForm("Crear", "Saberes", FormMethod.Post, new { enctype = "multipart/form-data", @style = "border:none", @class = "col-offset-2" }))
             {
                 <div class="modal-body">
                     <div class="col-md-12">
                         <div class="form-group">
-                            <label for="Codigo">Codigo del Aprendizaje:</label>
-                            <input maxlength="255" type="text" min="0" class="form-control" placeholder="Escriba aquí el codigo del Aprendizaje." name="Codigo" required>
+                            <label for="Codigo">Codigo del Saber:</label>
+                            <input maxlength="255" type="text" min="0" class="form-control" placeholder="Escriba aquí el codigo del Saber." name="Codigo" required>
                         </div>
                         <div class="form-group">
-                            <label for="Nombre">Descripción del Aprendizaje:</label>
-                            <input maxlength="255" type="text" min="0" class="form-control" placeholder="Escriba aquí la descripción del Aprendizaje." name="Descripcion" required>
+                            <label for="Nombre">Descripción del Saber:</label>
+                            <input maxlength="255" type="text" min="0" class="form-control" placeholder="Escriba aquí la descripción del Saber." name="Descripcion" required>
                         </div>
                         <div class="form-group">
                             <label for="Nombre">Nivel de logro:</label>
                             <select class="form-control" id="Logro" name="Logro" required>
-                                <option value="Aprendizaje">Aprendizaje</option>
-                                <option value="AprendizajeHacer">Aprendizaje Hacer</option>
-                                <option value="AprendizajeSer">Aprendizaje Ser</option>
+                                <option value="Saber">Saber</option>
+                                <option value="SaberHacer">Saber Hacer</option>
+                                <option value="SaberSer">Saber Ser</option>
                             </select>
                         </div>
                         <div class="form-group">
-                            <label for="Porcentaje">Porcentaje del Aprendizaje:</label>
-                            <input maxlength="255" type="text" min="0" class="form-control" placeholder="Escriba aquí el porcentaje del Aprendizaje." name="PorcentajeLogro" required>
+                            <label for="Porcentaje">Porcentaje del Saber:</label>
+                            <input maxlength="255" type="text" min="0" class="form-control" placeholder="Escriba aquí el porcentaje del Saber." name="PorcentajeLogro" required>
                         </div>
                     </div>
                     <input type="hidden" name="Id" value="-1">
@@ -101,8 +101,8 @@
         document.getElementById("categoria").setAttribute("value", cat);
     }
 
-    addAprendizaje = function (subcat) {
-        document.getElementById("competencia").setAttribute("value", subcat);
+    addSaber = function (subcat) {
+        document.getElementById("unidad").setAttribute("value", subcat);
     }
     editApren = function (cod, desc) {
         document.getElementById("editaprencod").setAttribute("value", cod);

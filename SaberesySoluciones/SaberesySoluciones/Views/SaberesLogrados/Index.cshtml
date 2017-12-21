@@ -11,7 +11,80 @@
 <h2>@ViewBag.Title</h2>
 
 
+@foreach (Competencia competencia in Model)
+{
+    <br />
 
+    <h4>
+        Competencia - Codigo @competencia.Codigo - @competencia.Descripcion - PorcentajeLogro @competencia.PorcentajeLogro
+    </h4>
+
+    <!--Table content-->
+    <table class="table table-striped table-hover table-bordered">
+        <thead class="thead-dark">
+            <tr>
+                <th>Código Aprendizaje</th>
+                <th>Descripción</th>
+                <th>Porcentaje Logro</th>
+                <th></th>
+            </tr>
+        </thead>
+        @foreach (Aprendizaje subcategoria in competencia.Aprendizajes)
+    {
+        <tr>
+            <td>Ap @subcategoria.Codigo</td>
+            <td style="text-align: justify">@subcategoria.Descripcion</td>
+            <td style="text-align: justify">@subcategoria.PorcentajeLogro</td>
+            <td style="vertical-align: middle; white-space: nowrap; text-align: right"></td>
+        </tr>
+
+
+        <!--Table content-->
+        <table class="table table-striped table-hover table-bordered">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Código Saber</th>
+                    <th>Descripción</th>
+                    <th>Porcentaje Logro</th>
+                    <th></th>
+                </tr>
+            </thead>
+            @foreach (Saber subcategoriaS in subcategoria.Saberes)
+        {
+            <tr>
+                <td>Sab @subcategoriaS.Codigo</td>
+                <td style="text-align: justify">@subcategoriaS.Descripcion</td>
+                <td style="text-align: justify">@subcategoriaS.PorcentajeLogro</td>
+                <td style="vertical-align: middle; white-space: nowrap; text-align: right"></td>
+            </tr>
+    }
+        </table>
+
+}
+    </table>
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--
 <table class="table table-striped table-hover table-bordered" id="comp">
     <thead class="thead-dark">
         <thread>
@@ -24,21 +97,21 @@
         </thread>
     </thead>
 
-        @foreach (var competencia in Model)
+       foreach (var competencia in Model)
         {
             <tr>
-                <td style="text-align:center"><img src="~/Content/img/add.png" style="cursor:pointer" compID="@competencia.Codigo" /></td>
-                <td style="text-align:center">@competencia.Codigo</td>
-                <td style="text-align:justify">@competencia.Descripcion</td>
-                <td style="text-align:center">@competencia.PorcentajeLogro</td>
+                <td style="text-align:center"><img src="~/Content/img/add.png" style="cursor:pointer" compID="competencia.Codigo" /></td>
+                <td style="text-align:center">competencia.Codigo</td>
+                <td style="text-align:justify">competencia.Descripcion</td>
+                <td style="text-align:center">competencia.PorcentajeLogro</td>
 
             </tr>
 
 
-            <tr id="fila-@competencia.Codigo" style="display:none">
+            <tr id="fila-competencia.Codigo" style="display:none">
                 <td></td>
                 <td colspan="5">
-                    @Html.Action("SubTablaAprendizaje")
+                    Html.Action("SubTablaAprendizaje")
                 </td>
             </tr>
 
@@ -60,7 +133,7 @@
                 else{
                      fila.css("display", "none");
                 }
-                
+
 
             });
         });
@@ -68,8 +141,6 @@
 
     </script>
 
-    
+
     }
-
-
-
+    -->

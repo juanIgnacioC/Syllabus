@@ -4,13 +4,13 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - Mi aplicación ASP.NET</title>
+    <title>@ViewBag.Title - Syllabus ASP.NET</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-utal sticky-top">
-        @Html.ActionLink("Nombre de aplicación", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+        @Html.ActionLink("Syllabus", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -33,16 +33,22 @@
                     @Html.ActionLink("Gestión de Saberes", "Index", "Saberes", null, new { @class = "nav-link" })
                 </li>
                 <li class="nav-item">
-                    @Html.ActionLink("Evaluaciones", "Index", "Evaluacion", null, new {@class = "nav-link"})
+                    @Html.ActionLink("Evaluaciones", "Index", "Evaluacion", null, new { @class = "nav-link" })
                 </li>
                 <li class="nav-item">
-                    @Html.ActionLink("Gestion de Unidades", "Index", "Unidades", null, new { @class = "nav-link" })
+                    @Html.ActionLink("Gestion de Cursos", "Index", "Cursos", null, new { @class = "nav-link" })
                 </li>
                 <li class="nav-item">
                     @Html.ActionLink("Gestion de Clases", "Index", "Clases", null, new { @class = "nav-link" })
                 </li>
                 <li class="nav-item">
+                    @Html.ActionLink("Gestión de Competencias en Aprendizajes", "Index", "CompetenciaEnAprendizaje", null, new { @class = "nav-link" })
+                </li>
+                <li class="nav-item">
                     @Html.ActionLink("Gestión de Aprendizajes en Saberes", "Index", "AprendizajeEnSaber", null, new { @class = "nav-link" })
+                </li>
+                <li class="nav-item">
+                    @Html.ActionLink("Gestión de Unidades en Saberes", "Index", "SaberEnUnidad", null, new { @class = "nav-link" })
                 </li>
                 <li class="nav-item">
                     @Html.ActionLink("Saberes Logrados", "Index", "SaberesLogrados", null, new { @class = "nav-link" })
@@ -86,7 +92,7 @@
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - Mi aplicación ASP.NET</p>
+            <p>&copy; @DateTime.Now.Year - By Club Manoli ASP.NET</p>
         </footer>
     </div>
 
