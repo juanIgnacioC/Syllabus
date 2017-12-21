@@ -280,6 +280,8 @@
     <Content Include="Views\Cursos\Index.cshtml" />
     <Content Include="Views\Aprendizajes\addSaber.cshtml" />
     <Content Include="Views\SaberEnUnidad\Index.cshtml" />
+    <Content Include="Views\AprendizajeEnSaber\addSaber.cshtml" />
+    <Content Include="Views\AprendizajeEnSaber\_AddSaber.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

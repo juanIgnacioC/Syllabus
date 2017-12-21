@@ -118,6 +118,25 @@ namespace SaberesSyllabus.Repositories
             }
         }
 
+        public static Boolean Nose(String codigoA, String codigoS)
+        {
+            try
+            {
+
+                var command = new MySqlCommand() { CommandText = "sp_saber_crearrelacion", CommandType = System.Data.CommandType.StoredProcedure };
+                command.Parameters.Add(new MySqlParameter() { ParameterName = "in_codigoAprendizaje", Direction = System.Data.ParameterDirection.Input, Value = codigoA });
+                command.Parameters.Add(new MySqlParameter() { ParameterName = "in_codigoSaber", Direction = System.Data.ParameterDirection.Input, Value = codigoS });
+                DataSource.ExecuteProcedure(command);
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+                return false;
+            }
+        }
+
 
         public static List<Aprendizaje> LeerTodo()
         {
@@ -207,4 +226,23 @@ namespace SaberesSyllabus.Repositories
         }
 
     }
+
+    /*public static Boolean Nose(String codigoA, String codigoS)
+    {
+        try
+        {
+
+            var command = new MySqlCommand() { CommandText = "sp_saber_crearrelacion", CommandType = System.Data.CommandType.StoredProcedure };
+            command.Parameters.Add(new MySqlParameter() { ParameterName = "in_codigoAprendizaje", Direction = System.Data.ParameterDirection.Input, Value = codigoA });
+            command.Parameters.Add(new MySqlParameter() { ParameterName = "in_codigoSaber", Direction = System.Data.ParameterDirection.Input, Value = codigoS });
+            DataSource.ExecuteProcedure(command);
+
+            return true;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.ToString());
+            return false;
+        }
+    }*/
 }

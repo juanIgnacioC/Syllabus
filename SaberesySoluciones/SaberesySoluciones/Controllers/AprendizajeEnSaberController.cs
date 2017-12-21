@@ -61,10 +61,10 @@ namespace SaberesySoluciones.Controllers
         }
 
         [HttpPost]
-        public ActionResult AgregarSaber(String codigo)
+        public ActionResult AgregarSaber(String codigoA, String codigoS)
         {
-            if (aprendizajeSaber.CodigoAprendizaje != null) {
-                var agregar = Saberes.CrearSaberEnAprendizaje(aprendizajeSaber.CodigoAprendizaje, codigo);
+            if (codigoA != null) {
+                var agregar = Saberes.CrearSaberEnAprendizaje(codigoA, codigoS);
             }
 
             return RedirectToAction("Index", "AprendizajeEnSaber");
