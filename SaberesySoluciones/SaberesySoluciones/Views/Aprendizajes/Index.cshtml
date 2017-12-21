@@ -30,33 +30,36 @@
             <th>Categoria</th>
             <th>SubCategoria</th>
             <th>Descripción</th>
+            <th>Logrado</th>
             <th></th>
             <th></th>
         </tr>
     </thead>
     @foreach (var apre in Model)
     {
-        <tr>
-            <td style="text-align:center">@apre.Codigo</td>
-            <td>@apre.Categoria</td>
-            <td>@apre.SubCategoria</td>
-            <td>@apre.Descripcion</td>
+    <tr>
+        <td style="text-align:center">@apre.Codigo</td>
+        <td>@apre.Categoria</td>
+        <td>@apre.SubCategoria</td>
+        <td>@apre.Descripcion</td>
+        <td><input type="checkbox" id="cbox1" value="first_checkbox">Aprendizaje logrado</td>
+        <td style="vertical-align: middle">
+            <a href="" id="btn-edit" class="btn btn-warning btn-sm" data-title="edit" data-toggle="modal" data-target="#edit" onclick="editmsj('@apre.Codigo', '@apre.Categoria', '@apre.SubCategoria', '@apre.Descripcion', '@apre.PorcentajeLogro', '@apre.Estado')"><i class="fa fa-edit"></i> >Modificar</a>
+        </td>
+        <td style="vertical-align: middle">
+            @if (@apre.Estado == EnumEstado.Habilitado)
+        {
+            <a href="" id="btn-delete" class="btn btn-danger btn-sm" data-title="desh" data-toggle="modal" data-target="#desh" onclick="deshmsj('@apre.Codigo')">Deshabilitar</a>
+    }
+            @if (@apre.Estado == EnumEstado.Deshabilitado)
+        {
+            <a href="" id="btn-delete" class="btn btn-danger btn-sm" data-title="hab" data-toggle="modal" data-target="#hab" onclick="habmsj('@apre.Codigo')">Habilitar</a>
+    }
+        </td>
+        
+        
 
-            <td style="vertical-align: middle">
-                <a href="" id="btn-edit" class="btn btn-warning btn-sm" data-title="edit" data-toggle="modal" data-target="#edit" onclick="editmsj('@apre.Codigo', '@apre.Categoria', '@apre.SubCategoria', '@apre.Descripcion', '@apre.PorcentajeLogro', '@apre.Estado')"><i class="fa fa-edit"></i> >Modificar</a>
-            </td>
-            <td style="vertical-align: middle">
-                @if (@apre.Estado == EnumEstado.Habilitado)
-                {
-                    <a href="" id="btn-delete" class="btn btn-danger btn-sm" data-title="desh" data-toggle="modal" data-target="#desh" onclick="deshmsj('@apre.Codigo')">Deshabilitar</a>
-                }
-                @if (@apre.Estado == EnumEstado.Deshabilitado)
-                {
-                    <a href="" id="btn-delete" class="btn btn-danger btn-sm" data-title="hab" data-toggle="modal" data-target="#hab" onclick="habmsj('@apre.Codigo')">Habilitar</a>
-                }
-            </td>
-
-        </tr>
+    </tr>
     }
 
 </table>

@@ -1,59 +1,47 @@
 ﻿using SaberesSyllabus.Models;
-using SaberesSyllabus.Repositories;
 using SaberesySoluciones.Models;
+using SaberesSyllabus.Repositories;
 using SaberesySoluciones.Repositories;
 using SaberesySoluciones.ViewModel;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace SaberesySoluciones.Controllers
 {
-    public class AprendizajeEnSaberController : Controller
+    public class SaberEnUnidadController : Controller
     {
-        AprendizajeEnSaberesController aprendizajeSaber = new AprendizajeEnSaberesController();
         // GET: AprendizajeEnSaber
         public ActionResult Index()
         {
-            List<Aprendizaje> aprendizajes = Aprendizajes.LeerHabilitados();
-            if (aprendizajes == null)
+            List<Unidad> unidades = Unidades.LeerTodo();
+            if (unidades == null)
             {
-                aprendizajes = new List<Aprendizaje>();
+                unidades = new List<Unidad>();
             }
-            foreach (Aprendizaje apr in aprendizajes)
+            foreach (Unidad uni in unidades)
             {
-                apr.Saberes = Aprendizajes.LeerSubSaberes(apr.Codigo);
+                uni.Saberes = Unidades.LeerSubSaberes(uni.Id);
 
                 //Ordenar las SubSaberes según el codigo para evitar que se vean desordenadas :)
                 //apr.Saberes.Sort((x, y) => x.Codigo.CompareTo(y.Codigo));
 
-                if (apr.Saberes== null)
+                if (uni.Saberes == null)
                 {
-                    apr.Saberes = new List<Saber>();
+                    uni.Saberes = new List<Saber>();
                 }
             }
 
-            return View(aprendizajes);
+            return View(unidades);
         }
         /*
         [HttpPost]
-        public ActionResult CrearSaber(Saber saber, Aprendizaje aprendizaje)
+        public ActionResult CargarUnidades(int codigoSaber)
         {
-            saber = Aprendizajes.Crear(aprendizaje);
-            return RedirectToAction("Index", "Aprendizajes");
-        }*/
-
-
-
-        [HttpPost]
-        public ActionResult CargarSaberes(String codigoAprendizaje)
-        {
-            var saberes = Saberes.LeerSaberesEnAprendizaje(codigoAprendizaje);
-            if (saberes != null)
+            var unidades = Unidades.LeerSubSaberes(codigoSaber);
+            if (unidades != null)
             {
-                aprendizajeSaber.SaberDeAprendizaje = saberes;
+                saberUnidad.UnidadDeSaber = ;
             }
             aprendizajeSaber.CodigoAprendizaje = codigoAprendizaje;
 
@@ -63,7 +51,8 @@ namespace SaberesySoluciones.Controllers
         [HttpPost]
         public ActionResult AgregarSaber(String codigo)
         {
-            if (aprendizajeSaber.CodigoAprendizaje != null) {
+            if (aprendizajeSaber.CodigoAprendizaje != null)
+            {
                 var agregar = Saberes.CrearSaberEnAprendizaje(aprendizajeSaber.CodigoAprendizaje, codigo);
             }
 
@@ -78,6 +67,6 @@ namespace SaberesySoluciones.Controllers
                 var agregar = Saberes.EliminarSaberEnAprendizaje(aprendizajeSaber.CodigoAprendizaje, codigo);
             }
             return RedirectToAction("Index", "AprendizajeEnSaber");
-        }
+        }*/
     }
 }

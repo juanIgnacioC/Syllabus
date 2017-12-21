@@ -11,6 +11,7 @@ namespace SaberesSyllabus.Models
 {
     public class Unidad
     {
+        public int Id { get; set; }
         public string Titulo { get; set; }
         public List<Clase> Clases { get; set; }
         public List<Saber> Saberes { get; set; }

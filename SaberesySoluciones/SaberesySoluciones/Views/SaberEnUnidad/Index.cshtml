@@ -1,23 +1,23 @@
 ﻿@using SaberesSyllabus.Repositories
 @using SaberesySoluciones.Models
 @using SaberesSyllabus.Models
-@model List<Aprendizaje>
+@model List<Unidad>
 
 
-<h1>Gestión de Aprendizajes en Saberes</h1>
+<h1>Gestión de Unidades en Saberes</h1>
 
 <br />
 
-@foreach (Aprendizaje aprendizaje in Model)
+@foreach (Unidad unidad in Model)
 {
     <br />
 
-    <button type="button" data-toggle="modal" data-target="#modalAddSaber" class="btn btn-success btn-sm" onclick="addSaber('@aprendizaje.Codigo')">
+    <button type="button" data-toggle="modal" data-target="#modalAddSaber" class="btn btn-success btn-sm" onclick="addSaber('@unidad.Id')">
         <i class="fa fa-plus"></i> Agregar Saber
     </button>
 
     <h4>
-        Aprendizaje - Codigo @aprendizaje.Codigo - @aprendizaje.Descripcion
+        Unidad - Codigo @unidad.Id - @unidad.Titulo
     </h4>
 
     <!--Table content-->
@@ -29,7 +29,7 @@
                 <th></th>
             </tr>
         </thead>
-        @foreach (Saber subcategoria in aprendizaje.Saberes)
+        @foreach (Saber subcategoria in unidad.Saberes)
         {
             <tr>
                 <td>@subcategoria.Codigo</td>
@@ -102,7 +102,7 @@
     }
 
     addSaber = function (subcat) {
-        document.getElementById("aprendizaje").setAttribute("value", subcat);
+        document.getElementById("unidad").setAttribute("value", subcat);
     }
     editApren = function (cod, desc) {
         document.getElementById("editaprencod").setAttribute("value", cod);
