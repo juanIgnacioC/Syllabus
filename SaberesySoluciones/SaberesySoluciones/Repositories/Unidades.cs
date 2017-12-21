@@ -88,61 +88,82 @@ namespace SaberesSyllabus.Repositories
             }
             return null;
         }
+
+        public static Boolean CrearSaberEnUnidad(String codigoU, String codigoS)
+        {
+            try
+            {
+
+                var command = new MySqlCommand() { CommandText = "sp_unidad_crearrelacion", CommandType = System.Data.CommandType.StoredProcedure };
+                command.Parameters.Add(new MySqlParameter() { ParameterName = "in_idUnidad", Direction = System.Data.ParameterDirection.Input, Value = codigoU });
+                command.Parameters.Add(new MySqlParameter() { ParameterName = "in_idSaber", Direction = System.Data.ParameterDirection.Input, Value = codigoS });
+                DataSource.ExecuteProcedure(command);
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+                return false;
+            }
+        }
     }
-    
-   /* public static List<Unidad> LeerUnidadesEnSaberes(String codigo)
-    {
-        try
-        {
-            var command = new MySqlCommand() { CommandText = "sp_saber_leerrelacion", CommandType = System.Data.CommandType.StoredProcedure };
-            command.Parameters.Add(new MySqlParameter() { ParameterName = "in_codigoAprendizaje", Direction = System.Data.ParameterDirection.Input, Value = codigo });
-            var datos = DataSource.GetDataSet(command);
-
-            List<String> codigoSaber = new List<string>();
-
-            if (datos.Tables[0].Rows.Count > 0)
-            {
-                foreach (System.Data.DataRow row in datos.Tables[0].Rows)
-                {
-                    var prodData = row;
-                    String flotante = prodData["codigoSaber"].ToString();
-                    codigoSaber.Add(flotante);
-                }
-            }
-
-            if (codigoSaber.Count != 0)
-            {
-                List<Saber> comps = new List<Saber>();
-
-                foreach (var c in codigoSaber)
-                {
-                    var UnSaber = LeerUno(c);
-                    if (UnSaber != null)
-                    {
-                        comps.Add(UnSaber);
-                    }
-                }
-                if (comps.Count != 0)
-                {
-                    return comps;
-                }
-
-            }
-            else
-            {
-                return null;
-            }
 
 
-        }
-        catch (Exception ex)
-        {
-            Console.WriteLine(ex.ToString());
-        }
-        finally
-        {
 
-        }
-        return null;
-    }*/
+    /* public static List<Unidad> LeerUnidadesEnSaberes(String codigo)
+     {
+         try
+         {
+             var command = new MySqlCommand() { CommandText = "sp_saber_leerrelacion", CommandType = System.Data.CommandType.StoredProcedure };
+             command.Parameters.Add(new MySqlParameter() { ParameterName = "in_codigoAprendizaje", Direction = System.Data.ParameterDirection.Input, Value = codigo });
+             var datos = DataSource.GetDataSet(command);
+
+             List<String> codigoSaber = new List<string>();
+
+             if (datos.Tables[0].Rows.Count > 0)
+             {
+                 foreach (System.Data.DataRow row in datos.Tables[0].Rows)
+                 {
+                     var prodData = row;
+                     String flotante = prodData["codigoSaber"].ToString();
+                     codigoSaber.Add(flotante);
+                 }
+             }
+
+             if (codigoSaber.Count != 0)
+             {
+                 List<Saber> comps = new List<Saber>();
+
+                 foreach (var c in codigoSaber)
+                 {
+                     var UnSaber = LeerUno(c);
+                     if (UnSaber != null)
+                     {
+                         comps.Add(UnSaber);
+                     }
+                 }
+                 if (comps.Count != 0)
+                 {
+                     return comps;
+                 }
+
+             }
+             else
+             {
+                 return null;
+             }
+
+
+         }
+         catch (Exception ex)
+         {
+             Console.WriteLine(ex.ToString());
+         }
+         finally
+         {
+
+         }
+         return null;
+     }*/
 }
